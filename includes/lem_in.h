@@ -6,7 +6,15 @@
 /*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:29 by hopham            #+#    #+#             */
-/*   Updated: 2020/02/17 11:43:33 by hopham           ###   ########.fr       */
+/*   Updated: 2020/02/17 15:06:14 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef LEM_IN_H
+# define LEM_IN_H
+
+#include "libft.h"
+#include "get_next_line.h"
+#include <stdio.h>
+
+#endif

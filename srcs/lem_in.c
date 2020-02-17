@@ -6,7 +6,13 @@
 /*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:04 by hopham            #+#    #+#             */
-/*   Updated: 2020/02/17 11:43:26 by hopham           ###   ########.fr       */
+/*   Updated: 2020/02/17 15:18:14 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "lem_in.h"
+
+int	main(int ac, char **av)
+{
+	return (0);
+}
