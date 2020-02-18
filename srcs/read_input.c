@@ -6,13 +6,13 @@
 /*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 11:27:13 by hopham            #+#    #+#             */
-/*   Updated: 2020/02/18 16:06:27 by hopham           ###   ########.fr       */
+/*   Updated: 2020/02/18 17:02:58 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-int		input_scan(t_room *room)
+int				input_scan(t_room *room)
 {
 	char	*line;
 	int		start;
@@ -33,6 +33,11 @@ int		input_scan(t_room *room)
 			end++;
 			get_next_line(0, &line);
 			(end == 1) ? add_rooms("end", &line, room) : 0;
+		}
+		else if (line[0] == '#' && line[1] != '#')
+		{
+			get_next_line(0, &line);
+			ft_strdel(&line);
 		}
 		else
 			add_rooms("room", &line, room);
