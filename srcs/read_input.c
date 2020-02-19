@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_input.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 11:27:13 by hopham            #+#    #+#             */
-/*   Updated: 2020/02/18 17:02:58 by hopham           ###   ########.fr       */
+/*   Updated: 2020/02/19 09:49:32 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,7 @@ int				input_scan(t_room *room)
 			(end == 1) ? add_rooms("end", &line, room) : 0;
 		}
 		else if (line[0] == '#' && line[1] != '#')
-		{
-			get_next_line(0, &line);
 			ft_strdel(&line);
-		}
 		else
 			add_rooms("room", &line, room);
 		ft_strdel(&line);
