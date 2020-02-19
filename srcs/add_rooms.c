@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 14:10:08 by hopham            #+#    #+#             */
-/*   Updated: 2020/02/19 09:46:47 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/02/19 09:53:40 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,15 @@ void	add_rooms(char *type, char **line, t_room *room)
 	char	**strsplit;
 
 	strsplit = ft_strsplit(*line, ' ');
-	// if (strsplit[0][0] != 'L' && strsplit[0][0] != '#')
-	// {
-		if (!ft_strcmp(type, "start"))
-			room->start = strsplit[0];
-		else if (!ft_strcmp(type, "end"))
-			room->end = strsplit[0];
-		room->name = strsplit[0];
-		if (room->name_list)
-			ft_lstadd_end(&room->name_list, ft_lstnew_str(room->name));
-		else
-			room->name_list = ft_lstnew_str(room->name);
-	// }
+	if (!ft_strcmp(type, "start"))
+		room->start = strsplit[0];
+	else if (!ft_strcmp(type, "end"))
+		room->end = strsplit[0];
+	room->name = strsplit[0];
+	if (room->name_list)
+		ft_lstadd_end(&room->name_list, ft_lstnew_str(room->name));
+	else
+		room->name_list = ft_lstnew_str(room->name);
 	ft_strdel(line);
 	validate(room);
 }

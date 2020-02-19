@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:29 by hopham            #+#    #+#             */
-/*   Updated: 2020/02/18 15:42:33 by hopham           ###   ########.fr       */
+/*   Updated: 2020/02/19 10:17:48 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,10 @@ typedef struct 	s_room
 	char	*start;
 	char	*end;
 	char	*name;
+	int		c_start;
+	int		c_end;
 	t_list	*name_list;
+	t_list	*links_list;
 }				t_room;
 
 typedef struct 	s_ants
@@ -64,6 +67,11 @@ void			initiate_structs(t_ants *ants, t_room *room);
 
 void			add_rooms(char *type, char **line, t_room *room);
 
+/*
+** ------ add_links.c ------
+*/
+
+// void			add_links(char **line, t_room *room);
 
 /*
 ** ------ error.c ------

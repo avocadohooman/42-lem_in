@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+         #
+#    By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/17 11:13:09 by hopham            #+#    #+#              #
-#    Updated: 2020/02/18 15:42:33 by hopham           ###   ########.fr        #
+#    Updated: 2020/02/19 10:12:39 by gmolin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ LIB_FOLDER = ./libft/
 FLAGS = -Wextra -Werror -Wall -g
 
 SRCS = ./srcs/
-FUNC = lem_in.c read_input.c error.c initiate_structs.c add_rooms.c
+FUNC = lem_in.c input_scan.c error.c initiate_structs.c add_rooms.c add_links.c
 
 FILES_C = $(addprefix $(SRCS), $(FUNC))
 OBJ = $(FUNC:.c=.o)
