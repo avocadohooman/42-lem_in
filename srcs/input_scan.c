@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_scan.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 11:27:13 by hopham            #+#    #+#             */
-/*   Updated: 2020/02/19 13:13:42 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/02/19 16:22:35 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int				input_scan(t_room *room)
 			scanning_links(&line, room);
 	}
 	if (room->c_start!= 1 || room->c_end != 1)
-		ft_error("ERROR: Duplicates.");
+		ft_error("ERROR: No start or end room.");
 	return (0);
 }
-

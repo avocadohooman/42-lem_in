@@ -6,7 +6,7 @@
 #    By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/17 11:13:09 by hopham            #+#    #+#              #
-#    Updated: 2020/02/19 12:09:26 by hopham           ###   ########.fr        #
+#    Updated: 2020/02/19 16:24:22 by hopham           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ LIB_FOLDER = ./libft/
 FLAGS = -Wextra -Werror -Wall -g
 
 SRCS = ./srcs/
-FUNC = lem_in.c input_scan.c error.c initiate_structs.c add_rooms.c add_links.c
+FUNC = lem_in.c input_scan.c error.c initiate_structs.c add_rooms.c add_links.c path_search.c
 
 FILES_C = $(addprefix $(SRCS), $(FUNC))
 OBJ = $(FUNC:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:29 by hopham            #+#    #+#             */
-/*   Updated: 2020/02/19 12:12:24 by hopham           ###   ########.fr       */
+/*   Updated: 2020/02/19 16:52:17 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,14 @@
 ** ------ STRUCTS ------
 */
 
+typedef struct	s_link
+{
+	char			*from;
+	char			*to;
+	int				visited;
+	struct s_link	*next;
+}				t_link;
+
 typedef struct 	s_room
 {
 	int		**links;
@@ -36,7 +44,8 @@ typedef struct 	s_room
 	int		c_start;
 	int		c_end;
 	t_list	*name_list;
-	t_list	*links_list;
+	t_link	*link_list;
+	t_list	*connections;
 }				t_room;
 
 typedef struct 	s_ants
@@ -74,6 +83,12 @@ void			add_rooms(char *type, char **line, t_room *room);
 */
 
 void			add_links(t_room *rooms, char *line);
+
+/*
+** ------ path_search.c ------
+*/
+
+void			path_search(t_room *room);
 
 /*
 ** ------ error.c ------

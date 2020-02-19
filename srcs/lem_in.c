@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:04 by hopham            #+#    #+#             */
-/*   Updated: 2020/02/19 13:17:03 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/02/19 16:44:11 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ static int	get_ants(void)
 static void testing_env(t_ants *ants, t_room *room)
 {
 	ft_printf("\nAmount of ants: %d\nStarting room: %s\nEnding room: %s\n", ants->amount, room->start, room->end);
+	while (room->link_list)
+	{
+		ft_printf("from: %s\nto: %s\n", room->link_list->from, room->link_list->to);
+		room->link_list = room->link_list->next;
+	}
 }
 
 int			main(void)
@@ -43,6 +48,7 @@ int			main(void)
 	initiate_structs(ants, room);
 	ants->amount = get_ants();
 	input_scan(room);
+	path_search(room);
 	testing_env(ants, room);
 	return (0);
 }
