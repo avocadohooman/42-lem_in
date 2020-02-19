@@ -14,3 +14,7 @@ fuck 2 3
 0 23 3
 hello 1 5
 # coment
+0-2
+2-3
+3-1
+4-fuck

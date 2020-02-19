@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:04 by hopham            #+#    #+#             */
-/*   Updated: 2020/02/19 09:54:10 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/02/19 13:17:03 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,7 @@ static int	get_ants(void)
 
 static void testing_env(t_ants *ants, t_room *room)
 {
-	ft_printf("Amount of ants: %d\nStarting room: %s\nEnding room: %s\n", ants->amount, room->start, room->end);
-	while (room->name_list)
-	{
-		ft_printf("%s\n", room->name_list->content);
-		room->name_list = room->name_list->next;
-	}
+	ft_printf("\nAmount of ants: %d\nStarting room: %s\nEnding room: %s\n", ants->amount, room->start, room->end);
 }
 
 int			main(void)

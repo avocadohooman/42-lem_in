@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 14:10:08 by hopham            #+#    #+#             */
-/*   Updated: 2020/02/19 09:53:40 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/02/19 13:08:48 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	add_rooms(char *type, char **line, t_room *room)
 {
 	char	**strsplit;
 
+	ft_printf("%s\n", *line);
 	strsplit = ft_strsplit(*line, ' ');
 	if (!ft_strcmp(type, "start"))
 		room->start = strsplit[0];
