@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_links.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 10:11:05 by gmolin            #+#    #+#             */
-/*   Updated: 2020/02/19 16:08:05 by hopham           ###   ########.fr       */
+/*   Updated: 2020/02/20 10:00:43 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ static t_link	*create_links_list(char *from, char *to)
 	links->from = from;
 	links->to = to;
 	links->next = NULL;
+	links->visited = 0;
 	return (links);
 }
 

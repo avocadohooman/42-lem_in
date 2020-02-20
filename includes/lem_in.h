@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:29 by hopham            #+#    #+#             */
-/*   Updated: 2020/02/19 16:52:17 by hopham           ###   ########.fr       */
+/*   Updated: 2020/02/20 09:55:58 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void			add_links(t_room *rooms, char *line);
 ** ------ path_search.c ------
 */
 
-void			path_search(t_room *room);
+void			path_search(t_room *room, char *find);
 
 /*
 ** ------ error.c ------

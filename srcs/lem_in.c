@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:04 by hopham            #+#    #+#             */
-/*   Updated: 2020/02/19 16:44:11 by hopham           ###   ########.fr       */
+/*   Updated: 2020/02/20 09:56:26 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int			main(void)
 	initiate_structs(ants, room);
 	ants->amount = get_ants();
 	input_scan(room);
-	path_search(room);
+	path_search(room, room->start);
 	testing_env(ants, room);
 	return (0);
 }
