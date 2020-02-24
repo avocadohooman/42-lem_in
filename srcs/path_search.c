@@ -6,13 +6,13 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:24:14 by gmolin            #+#    #+#             */
-/*   Updated: 2020/02/20 10:25:34 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/02/24 12:43:06 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void			path_search(t_room *room, char *find)
+void			path_search(t_lem *room, char *find)
 {
 	t_link 	*tmp;
 	char 	*path;
@@ -21,7 +21,7 @@ void			path_search(t_room *room, char *find)
 	tmp_path = malloc(sizeof(char) * 4096);
 	path = malloc(sizeof(char) * 4096);
 	tmp = room->link_list;
-	while (room->link_list && (room->link_list->to != room->end || room->link_list->from != room->end))
+	while (room->link_list && (find != room->end || find != room->end))
 	{
 		if (!ft_strcmp(room->link_list->from, find) && room->link_list->visited == 0)
 		{

@@ -6,13 +6,32 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 14:10:08 by hopham            #+#    #+#             */
-/*   Updated: 2020/02/19 13:08:48 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/02/24 12:42:26 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-static	void	validate(t_room *room)
+static	void	check_coordinates(char **room)
+{
+	int i;
+	int k;
+
+	k = 1;
+	while (room[k])
+	{
+		i = 0;
+		while (room[k][i])
+		{
+			if (!ft_isdigit(room[k][i]))
+				ft_error("invalid input");
+			i++;
+		}
+		k++;
+	}
+}
+
+static	void	validate(t_lem *room)
 {
 	int i;
 	t_list *tmp;
@@ -29,12 +48,12 @@ static	void	validate(t_room *room)
 	}
 }
 
-void	add_rooms(char *type, char **line, t_room *room)
+void	add_rooms(char *type, char **line, t_lem *room)
 {
 	char	**strsplit;
 
-	ft_printf("%s\n", *line);
 	strsplit = ft_strsplit(*line, ' ');
+	check_coordinates(strsplit);
 	if (!ft_strcmp(type, "start"))
 		room->start = strsplit[0];
 	else if (!ft_strcmp(type, "end"))
@@ -44,6 +63,7 @@ void	add_rooms(char *type, char **line, t_room *room)
 		ft_lstadd_end(&room->name_list, ft_lstnew_str(room->name));
 	else
 		room->name_list = ft_lstnew_str(room->name);
-	ft_strdel(line);
 	validate(room);
+	ft_printf("%s\n", *line);
+	ft_strdel(line);
 }

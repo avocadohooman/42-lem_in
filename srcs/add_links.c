@@ -6,13 +6,13 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 10:11:05 by gmolin            #+#    #+#             */
-/*   Updated: 2020/02/20 10:00:43 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/02/24 12:42:35 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-static void	validate_link(t_room *rooms, char *name)
+static void	validate_link(t_lem *rooms, char *name)
 {
 	t_list	*room_name;
 
@@ -50,7 +50,7 @@ static void		add_links_to_list(t_link **list, t_link *new_link)
 	return ;
 }
 
-void		add_links(t_room *rooms, char *line)
+void		add_links(t_lem *rooms, char *line)
 {
 	char	*from;
 	char	*to;

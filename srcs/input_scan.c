@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   input_scan.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 11:27:13 by hopham            #+#    #+#             */
-/*   Updated: 2020/02/19 16:22:35 by hopham           ###   ########.fr       */
+/*   Updated: 2020/02/24 12:42:56 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-static void		scanning_links(char **line, t_room *room)
+static void		scanning_links(char **line, t_lem *room)
 {
 	add_links(room, *line);
 	ft_strdel(line);
 }
 
-static void		scanning_rooms(char **line, t_room *room)
+static void		scanning_rooms(char **line, t_lem *room)
 {
 	(ft_strstr(*line, "##")) ? ft_printf("%s\n", *line) : 0;
 	if (ft_strcmp("##start", *line) == 0)
@@ -43,7 +43,7 @@ static void		scanning_rooms(char **line, t_room *room)
 	ft_strdel(line);
 }
 
-int				input_scan(t_room *room)
+int				input_scan(t_lem *room)
 {
 	char	*line;
 

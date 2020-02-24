@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:29 by hopham            #+#    #+#             */
-/*   Updated: 2020/02/20 09:55:58 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/02/24 12:45:21 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct	s_link
 	struct s_link	*next;
 }				t_link;
 
-typedef struct 	s_room
+typedef struct 	s_lem
 {
 	int		**links;
 	char	*start;
@@ -46,6 +46,11 @@ typedef struct 	s_room
 	t_list	*name_list;
 	t_link	*link_list;
 	t_list	*connections;
+}				t_lem;
+
+typedef struct 	s_room
+{
+	
 }				t_room;
 
 typedef struct 	s_ants
@@ -64,31 +69,31 @@ int				main(void);
 ** ------ read_input.c ------
 */
 
-int				input_scan(t_room *room);
+int				input_scan(t_lem *room);
 
 /*
 ** ------ initiate_structs.c ------
 */
 
-void			initiate_structs(t_ants *ants, t_room *room);
+void			initiate_structs(t_ants *ants, t_lem *room);
 
 /*
 ** ------ add_rooms.c ------
 */
 
-void			add_rooms(char *type, char **line, t_room *room);
+void			add_rooms(char *type, char **line, t_lem *room);
 
 /*
 ** ------ add_links.c ------
 */
 
-void			add_links(t_room *rooms, char *line);
+void			add_links(t_lem *rooms, char *line);
 
 /*
 ** ------ path_search.c ------
 */
 
-void			path_search(t_room *room, char *find);
+void			path_search(t_lem *room, char *find);
 
 /*
 ** ------ error.c ------
