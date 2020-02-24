@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 14:10:08 by hopham            #+#    #+#             */
-/*   Updated: 2020/02/24 12:42:26 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/02/24 16:28:27 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,39 +31,39 @@ static	void	check_coordinates(char **room)
 	}
 }
 
-static	void	validate(t_lem *room)
+static	void	validate(t_lem *lem_in)
 {
 	int i;
 	t_list *tmp;
 
-	tmp = room->name_list;
+	tmp = lem_in->name_list;
 	i = 0;
 	while (tmp)
 	{
-		if (!ft_strcmp(tmp->content, room->name))
+		if (!ft_strcmp(tmp->content, lem_in->name))
 			i++;
-		if (i > 1 || room->name[0] == 'L' || room->name[0] == '#')
+		if (i > 1 || lem_in->name[0] == 'L' || lem_in->name[0] == '#')
 			ft_error("ERROR: Duplicates");
 		tmp = tmp->next;
 	}
 }
 
-void	add_rooms(char *type, char **line, t_lem *room)
+void	add_rooms(char *type, char **line, t_lem *lem_in)
 {
 	char	**strsplit;
 
 	strsplit = ft_strsplit(*line, ' ');
 	check_coordinates(strsplit);
 	if (!ft_strcmp(type, "start"))
-		room->start = strsplit[0];
+		lem_in->start = strsplit[0];
 	else if (!ft_strcmp(type, "end"))
-		room->end = strsplit[0];
-	room->name = strsplit[0];
-	if (room->name_list)
-		ft_lstadd_end(&room->name_list, ft_lstnew_str(room->name));
+		lem_in->end = strsplit[0];
+	lem_in->name = strsplit[0];
+	if (lem_in->name_list)
+		ft_lstadd_end(&lem_in->name_list, ft_lstnew_str(lem_in->name));
 	else
-		room->name_list = ft_lstnew_str(room->name);
-	validate(room);
+		lem_in->name_list = ft_lstnew_str(lem_in->name);
+	validate(lem_in);
 	ft_printf("%s\n", *line);
 	ft_strdel(line);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:04 by hopham            #+#    #+#             */
-/*   Updated: 2020/02/24 12:42:03 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/02/24 17:50:46 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,29 +34,34 @@ static int	get_ants(void)
 	return (ant_numbers);
 }
 
-// static void testing_env(t_ants *ants, t_room *room)
-// {
-// 	ft_printf("\nAmount of ants: %d\nStarting room: %s\nEnding room: %s\n", ants->amount, room->start, room->end);
-// 	while (room->link_list)
-// 	{
-// 		ft_printf("from: %s\nto: %s\n", room->link_list->from, room->link_list->to);
-// 		room->link_list = room->link_list->next;
-// 	}
-// }
+static void testing_env(t_ants *ants, t_lem *lem_in)
+{
+	int i;
+
+	i = 0;
+	ft_printf("\nAmount of ants: %d\nStarting room: %s\nEnding room: %s\n", ants->amount, lem_in->start, lem_in->end);
+	while (lem_in->link_list && i < lem_in->room_amount)
+	{
+		ft_printf("room name: %s\nroom index: %d\n", lem_in->rooms[i]->name, lem_in->rooms[i]->pos);
+		lem_in->link_list = lem_in->link_list->next;
+		i++;
+	}
+}
 
 int			main(void)
 {
 	t_ants 	*ants;
-	t_lem 	*room;
+	t_lem 	*lem_in;
 
 	if (!(ants = (t_ants*)ft_memalloc(sizeof(t_ants))))
 		return (0);
-	if (!(room = (t_lem*)ft_memalloc(sizeof(t_lem))))
+	if (!(lem_in = (t_lem*)ft_memalloc(sizeof(t_lem))))
 		return (0);
-	initiate_structs(ants, room);
+	initiate_structs(ants, lem_in);
 	ants->amount = get_ants();
-	input_scan(room);
-	path_search(room, room->start);
-	// testing_env(ants, room);
+	input_scan(lem_in);
+	add_room_to_array(lem_in);
+	add_links_to_arrays(lem_in);
+	testing_env(ants, lem_in);
 	return (0);
 }

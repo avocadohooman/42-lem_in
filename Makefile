@@ -6,7 +6,7 @@
 #    By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/17 11:13:09 by hopham            #+#    #+#              #
-#    Updated: 2020/02/20 09:05:46 by gmolin           ###   ########.fr        #
+#    Updated: 2020/02/24 15:28:47 by gmolin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ LIB_FOLDER = ./libft/
 FLAGS = -Wextra -Werror -Wall -g
 
 SRCS = ./srcs/
-FUNC = lem_in.c input_scan.c error.c initiate_structs.c add_rooms.c add_links.c path_search.c
+FUNC = lem_in.c input_scan.c error.c initiate_structs.c add_rooms.c add_links.c \
+		create_arrays.c allocate_memory.c path_search.c
 
 FILES_C = $(addprefix $(SRCS), $(FUNC))
 OBJ = $(FUNC:.c=.o)

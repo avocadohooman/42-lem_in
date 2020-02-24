@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:29 by hopham            #+#    #+#             */
-/*   Updated: 2020/02/24 12:45:21 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/02/24 17:50:31 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,13 @@ typedef struct	s_link
 	struct s_link	*next;
 }				t_link;
 
+typedef struct 	s_room
+{
+	char			*name;
+	unsigned int	visited;
+	int				pos;
+}				t_room;
+
 typedef struct 	s_lem
 {
 	int		**links;
@@ -43,15 +50,12 @@ typedef struct 	s_lem
 	char	*name;
 	int		c_start;
 	int		c_end;
+	int		room_amount;
+	t_room	**rooms;
 	t_list	*name_list;
 	t_link	*link_list;
 	t_list	*connections;
 }				t_lem;
-
-typedef struct 	s_room
-{
-	
-}				t_room;
 
 typedef struct 	s_ants
 {
@@ -75,25 +79,34 @@ int				input_scan(t_lem *room);
 ** ------ initiate_structs.c ------
 */
 
-void			initiate_structs(t_ants *ants, t_lem *room);
+void			initiate_structs(t_ants *ants, t_lem *lem_in);
 
 /*
 ** ------ add_rooms.c ------
 */
 
-void			add_rooms(char *type, char **line, t_lem *room);
+void			add_rooms(char *type, char **line, t_lem *lem_in);
 
 /*
 ** ------ add_links.c ------
 */
 
-void			add_links(t_lem *rooms, char *line);
+void			add_links(t_lem *lem_in, char *line);
+
+/*
+** ------ create_arrays.c ------
+*/
+
+void			room_malloc(t_lem *lem_in);
+void			links_malloc(t_lem *lem_in);
+void			add_room_to_array(t_lem *lem_in);
+void			add_links_to_arrays(t_lem *lem_in);
 
 /*
 ** ------ path_search.c ------
 */
 
-void			path_search(t_lem *room, char *find);
+void			path_search(t_lem *lem_in);
 
 /*
 ** ------ error.c ------
