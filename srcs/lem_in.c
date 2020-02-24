@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:04 by hopham            #+#    #+#             */
-/*   Updated: 2020/02/24 17:50:46 by hopham           ###   ########.fr       */
+/*   Updated: 2020/02/24 18:04:27 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,20 @@ static void testing_env(t_ants *ants, t_lem *lem_in)
 	{
 		ft_printf("room name: %s\nroom index: %d\n", lem_in->rooms[i]->name, lem_in->rooms[i]->pos);
 		lem_in->link_list = lem_in->link_list->next;
+		i++;
+	}
+
+	int  k = 0;
+	i = 0;
+	while (i < lem_in->room_amount)
+	{
+		k = 0;
+		while (k < lem_in->room_amount)
+		{
+			ft_printf("%d ", lem_in->links[i][k]);
+			k++;
+		}
+		ft_printf("\n");
 		i++;
 	}
 }
