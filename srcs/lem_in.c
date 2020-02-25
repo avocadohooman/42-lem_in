@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:04 by hopham            #+#    #+#             */
-/*   Updated: 2020/02/24 18:04:27 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/02/25 14:20:18 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,7 @@ int			main(void)
 	add_room_to_array(lem_in);
 	add_links_to_arrays(lem_in);
 	testing_env(ants, lem_in);
+	if (!path_search(lem_in))
+		ft_error("ERROR: no path");
 	return (0);
 }

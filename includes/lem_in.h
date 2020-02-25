@@ -6,7 +6,7 @@
 /*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:29 by hopham            #+#    #+#             */
-/*   Updated: 2020/02/25 11:08:22 by hopham           ###   ########.fr       */
+/*   Updated: 2020/02/25 14:19:32 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,13 @@ typedef struct	s_link
 
 typedef struct	s_node
 {
-	void			*content;
-	struct s_queue	*next;
+	int				content;
+	struct s_node	*next;
 }				t_node;
 
 typedef struct	s_queue
 {
+	int		pop;
 	t_node	*first;
 }				t_queue;
 
@@ -117,7 +118,15 @@ void			add_links_to_arrays(t_lem *lem_in);
 ** ------ path_search.c ------
 */
 
-void			path_search(t_lem *lem_in);
+int				path_search(t_lem *lem_in);
+
+/*
+** ------ bfs_queue.c ------
+*/
+
+t_queue			*create_queue(void);
+void			pop_first_value(t_queue *queue);
+void			ft_enqueue(t_queue *queue, int content);
 
 /*
 ** ------ error.c ------
