@@ -6,7 +6,7 @@
 /*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:29 by hopham            #+#    #+#             */
-/*   Updated: 2020/02/24 18:19:44 by hopham           ###   ########.fr       */
+/*   Updated: 2020/02/25 11:08:22 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,17 @@ typedef struct	s_link
 	int				visited;
 	struct s_link	*next;
 }				t_link;
+
+typedef struct	s_node
+{
+	void			*content;
+	struct s_queue	*next;
+}				t_node;
+
+typedef struct	s_queue
+{
+	t_node	*first;
+}				t_queue;
 
 typedef struct 	s_room
 {
