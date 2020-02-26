@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:04 by hopham            #+#    #+#             */
-/*   Updated: 2020/02/25 14:20:18 by hopham           ###   ########.fr       */
+/*   Updated: 2020/02/26 15:48:18 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,22 @@ static void testing_env(t_ants *ants, t_lem *lem_in)
 	ft_printf("\nAmount of ants: %d\nStarting room: %s\nEnding room: %s\n", ants->amount, lem_in->start, lem_in->end);
 	while (lem_in->link_list && i < lem_in->room_amount)
 	{
-		ft_printf("room name: %s\nroom index: %d\n", lem_in->rooms[i]->name, lem_in->rooms[i]->pos);
+		ft_printf("room name: %10s -> room index: %d\n", lem_in->rooms[i]->name, lem_in->rooms[i]->pos);
 		lem_in->link_list = lem_in->link_list->next;
 		i++;
 	}
+
+	ants->amount = ants->amount;
 
 	int  k = 0;
 	i = 0;
 	while (i < lem_in->room_amount)
 	{
 		k = 0;
+		ft_printf("room %d: ", i);
 		while (k < lem_in->room_amount)
 		{
-			ft_printf("%d ", lem_in->links[i][k]);
+			ft_printf("%d ",lem_in->links[i][k]);
 			k++;
 		}
 		ft_printf("\n");
@@ -76,8 +79,19 @@ int			main(void)
 	input_scan(lem_in);
 	add_room_to_array(lem_in);
 	add_links_to_arrays(lem_in);
+	path_search(lem_in);
+	int i = 0;
+	while (i < 8)
+	{
+		create_paths(lem_in, i);
+		i++;
+	}
+	// while (path_search(lem_in))
+	// {
+	// 	create_paths(lem_in);
+	// }
+	// if (!path_search(lem_in))
+	// 	ft_error("ERROR: no path");
 	testing_env(ants, lem_in);
-	if (!path_search(lem_in))
-		ft_error("ERROR: no path");
 	return (0);
 }
