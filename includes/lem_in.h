@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:29 by hopham            #+#    #+#             */
-/*   Updated: 2020/02/26 15:11:40 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/02/27 18:17:00 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 #include "ft_printf.h"
 #include "get_next_line.h"
 #include <stdio.h>
-
 
 /*
 ** ------ STRUCTS ------

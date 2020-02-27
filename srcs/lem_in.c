@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:04 by hopham            #+#    #+#             */
-/*   Updated: 2020/02/26 15:48:18 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/02/27 17:43:22 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,9 @@ int			main(void)
 	input_scan(lem_in);
 	add_room_to_array(lem_in);
 	add_links_to_arrays(lem_in);
-	path_search(lem_in);
+	// path_search(lem_in);
 	int i = 0;
-	while (i < 8)
+	while (path_search(lem_in) == 1) 
 	{
 		create_paths(lem_in, i);
 		i++;
