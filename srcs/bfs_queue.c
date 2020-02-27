@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bfs_queue.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 11:10:39 by hopham            #+#    #+#             */
-/*   Updated: 2020/02/25 14:34:43 by hopham           ###   ########.fr       */
+/*   Updated: 2020/02/26 09:31:11 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void			pop_first_value(t_queue *queue)
 		return ;
 	tmp = queue->first;
 	queue->pop = queue->first->content;
-	//ft_printf("pop: %d\n", queue->pop);
 	next_node = queue->first->next;
 	queue->first = next_node;
 	free(tmp);

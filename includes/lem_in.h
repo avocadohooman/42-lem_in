@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:29 by hopham            #+#    #+#             */
-/*   Updated: 2020/02/25 14:19:32 by hopham           ###   ########.fr       */
+/*   Updated: 2020/02/27 18:17:00 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 #include "ft_printf.h"
 #include "get_next_line.h"
 #include <stdio.h>
-
 
 /*
 ** ------ STRUCTS ------
@@ -63,6 +62,7 @@ typedef struct 	s_lem
 	int		c_start;
 	int		c_end;
 	int		room_amount;
+	int		paths[100][100];
 	t_room	**rooms;
 	t_list	*name_list;
 	t_link	*link_list;
@@ -127,6 +127,12 @@ int				path_search(t_lem *lem_in);
 t_queue			*create_queue(void);
 void			pop_first_value(t_queue *queue);
 void			ft_enqueue(t_queue *queue, int content);
+
+/*
+** ------ create_paths.c ------
+*/
+
+void			create_paths(t_lem *lem, int level);
 
 /*
 ** ------ error.c ------

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path_search.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:24:14 by gmolin            #+#    #+#             */
-/*   Updated: 2020/02/25 14:19:24 by hopham           ###   ########.fr       */
+/*   Updated: 2020/02/27 15:13:24 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,14 @@ void	print_queue(t_queue *queue)
 	ft_printf("\n");
 }
 
-int	path_search(t_lem *lem_in)
+int		path_search(t_lem *lem_in)
 {
 	t_queue	*queue;
 	int		**arr;
 	int		r1;
 	int		r2;
 	int		*visited;
+
 
 	if (!(visited = (int*)ft_memalloc(sizeof(int) * lem_in->room_amount)))
 		ft_error("ERROR: allocate memory array visited");
@@ -57,15 +58,4 @@ int	path_search(t_lem *lem_in)
 	free(visited);
 	free(queue);
 	return (r1);
-	// ft_enqueue(queue, pop_number);
-	// ft_enqueue(queue, 4);
-	// ft_enqueue(queue, 5);
-
-	// print_queue(queue);
-	// pop_first_value(queue);
-	// pop_first_value(queue);
-	// pop_first_value(queue);
-	// //pop_first_value(queue);
-	// print_queue(queue);
-
 }
