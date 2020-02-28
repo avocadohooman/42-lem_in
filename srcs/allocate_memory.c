@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 14:52:10 by hopham            #+#    #+#             */
-/*   Updated: 2020/02/26 11:28:19 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/02/28 14:18:31 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,22 @@ void    links_malloc(t_lem *lem_in)
         if (!(lem_in->links[i] = (int*)ft_memalloc(sizeof(int)
 								* lem_in->room_amount)))
             ft_error("ERROR: malloc problem links int");
+        i++;
+    }
+}
+
+void	paths_malloc(t_lem *lem_in)
+{
+	int i;
+
+    if (!(lem_in->paths = (int**)ft_memalloc(sizeof(int*) * 1000)))
+        ft_error("ERROR: malloc problem paths int");
+    i = 0;
+    while (i < 1000)
+    {
+        if (!(lem_in->paths[i] = (int*)ft_memalloc(sizeof(int)
+								* 1000)))
+            ft_error("ERROR: malloc problem paths int");
         i++;
     }
 }

@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 09:48:54 by gmolin            #+#    #+#             */
-/*   Updated: 2020/02/27 18:14:55 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/02/28 14:15:41 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,21 @@
 static int		check_visited(t_lem *lem, int level, int nb)
 {
 	int i;
+	// int k;
 
 	i = 0;
-	while (lem->paths[level][i])
-	{
-		if (lem->paths[level][i] == nb)
-			return (0);
-		i++;
-	}
+	// k = level;
+	// while (k < level)
+	// {
+	// 	i = 0;
+		while (lem->paths[level][i])
+		{
+			if (lem->paths[level][i] == nb)
+				return (0);
+			i++;
+		}
+		// level++;
+	// }
 	return (1);
 }
 
@@ -63,6 +70,7 @@ static void		check_dead_end(t_lem *lem, int level, int pos, int i)
 		}
 	}
 }
+
 void			create_paths(t_lem *lem, int level)
 {
 	int	pos;
@@ -94,11 +102,4 @@ void			create_paths(t_lem *lem, int level)
 		i++;
 	}
 	check_dead_end(lem, level, pos, i);
-	i = 0;
-	while (lem->paths[level][i])
-	{
-		ft_printf("%d ", lem->paths[level][i]);
-		i++;
-	}
-	ft_printf("%d \n", lem->paths[level][i]);
 }

@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:29 by hopham            #+#    #+#             */
-/*   Updated: 2020/02/27 18:17:00 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/02/28 14:10:23 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ typedef struct 	s_lem
 	int		c_start;
 	int		c_end;
 	int		room_amount;
-	int		paths[100][100];
+	int		**paths;
+	// int		paths[100][100];
 	t_room	**rooms;
 	t_list	*name_list;
 	t_link	*link_list;
@@ -98,6 +99,14 @@ void			initiate_structs(t_ants *ants, t_lem *lem_in);
 */
 
 void			add_rooms(char *type, char **line, t_lem *lem_in);
+
+/*
+** ------ allocate_memory.c ------
+*/
+
+void			room_malloc(t_lem *lem_in);
+void    		links_malloc(t_lem *lem_in);
+void			paths_malloc(t_lem *lem_in);
 
 /*
 ** ------ add_links.c ------

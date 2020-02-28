@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:24:14 by gmolin            #+#    #+#             */
-/*   Updated: 2020/02/27 15:13:24 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/02/28 14:19:42 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int		path_search(t_lem *lem_in)
 	int		r1;
 	int		r2;
 	int		*visited;
-
 
 	if (!(visited = (int*)ft_memalloc(sizeof(int) * lem_in->room_amount)))
 		ft_error("ERROR: allocate memory array visited");

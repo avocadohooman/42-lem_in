@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 13:34:51 by hopham            #+#    #+#             */
-/*   Updated: 2020/02/26 13:53:32 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/02/28 14:20:10 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void			add_links_to_arrays(t_lem *lem_in)
 	t_link	*tmp;
 
 	links_malloc(lem_in);
+	paths_malloc(lem_in);
 	j = 0;
 	tmp = lem_in->link_list;
 	while (j < lem_in->room_amount)
