@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:29 by hopham            #+#    #+#             */
-/*   Updated: 2020/02/28 14:10:23 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/02/28 16:38:15 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,13 @@ typedef struct 	s_room
 	unsigned int	visited;
 	int				pos;
 }				t_room;
+
+typedef struct	s_path
+{
+	int				**shortest;
+	int				nb_shortest_paths;
+	struct s_path	*next;
+}				t_path;
 
 typedef struct 	s_lem
 {
@@ -142,6 +149,7 @@ void			ft_enqueue(t_queue *queue, int content);
 */
 
 void			create_paths(t_lem *lem, int level);
+t_path			*path(int **arr_of_paths, int k);
 
 /*
 ** ------ error.c ------
