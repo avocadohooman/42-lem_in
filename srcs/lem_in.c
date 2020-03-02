@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:04 by hopham            #+#    #+#             */
-/*   Updated: 2020/02/27 17:43:22 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/03/02 17:43:16 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	get_ants(void)
 	return (ant_numbers);
 }
 
-static void testing_env(t_ants *ants, t_lem *lem_in)
+static void testing_env(t_ants *ants, t_path *path, t_lem *lem_in, int level)
 {
 	int i;
 
@@ -63,13 +63,56 @@ static void testing_env(t_ants *ants, t_lem *lem_in)
 		ft_printf("\n");
 		i++;
 	}
+	i = 0;
+	k = 0;
+	while (k < level)
+	{
+		i = 0;
+		while (lem_in->paths[k][i])
+		{
+			ft_printf("%d -> ", lem_in->paths[k][i]);
+			i++;
+		}
+		ft_printf("%d\n", lem_in->paths[k][i]);
+		k++;
+	}
+	ft_printf("Shortest paths:\n");
+	i = 0;
+	while (i < path->nb_shortest_paths)
+	{
+		k = 0;
+		while (path->shortest[i][k])
+		{
+			ft_printf("%i -> ", path->shortest[i][k]);
+			k++;
+		}
+		ft_printf("%d\n", path->shortest[i][k]);
+		i++;
+	}
+	ft_printf("Filtered short paths:\n");
+	i = 0;
+	while (i < path->nb_shortest_paths)
+	{
+		k = 0;
+		while (lem_in->filtered_short[i][k])
+		{
+			ft_printf("%i -> ", lem_in->filtered_short[i][k]);
+			k++;
+		}
+		ft_printf("%d\n", lem_in->filtered_short[i][k]);
+		i++;
+	}
+	ft_printf("nb of paths found: %d\n", lem_in->nb_paths);
 }
 
 int			main(void)
 {
 	t_ants 	*ants;
 	t_lem 	*lem_in;
+	t_path	*shortest_path;
+	int i;
 
+	i = 0;
 	if (!(ants = (t_ants*)ft_memalloc(sizeof(t_ants))))
 		return (0);
 	if (!(lem_in = (t_lem*)ft_memalloc(sizeof(t_lem))))
@@ -79,19 +122,15 @@ int			main(void)
 	input_scan(lem_in);
 	add_room_to_array(lem_in);
 	add_links_to_arrays(lem_in);
-	// path_search(lem_in);
-	int i = 0;
+	if (!path_search(lem_in))
+		ft_error("ERROR: no path");
 	while (path_search(lem_in) == 1) 
 	{
 		create_paths(lem_in, i);
 		i++;
 	}
-	// while (path_search(lem_in))
-	// {
-	// 	create_paths(lem_in);
-	// }
-	// if (!path_search(lem_in))
-	// 	ft_error("ERROR: no path");
-	testing_env(ants, lem_in);
+	shortest_path = path(lem_in->paths, i, lem_in);
+	sort_paths(&shortest_path, lem_in, i);
+	testing_env(ants, shortest_path, lem_in, i);
 	return (0);
 }

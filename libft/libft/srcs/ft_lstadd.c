@@ -6,7 +6,7 @@
 /*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 14:42:30 by hopham            #+#    #+#             */
-/*   Updated: 2019/10/23 09:29:11 by hopham           ###   ########.fr       */
+/*   Updated: 2020/02/28 15:13:29 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@
 
 void	ft_lstadd(t_list **alst, t_list *new)
 {
+	if (!(*alst))
+	{
+		*alst = ft_lstnew(new->content, new->content_size);
+		return ;
+	}
 	new->next = *alst;
 	*alst = new;
 }

@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:29 by hopham            #+#    #+#             */
-/*   Updated: 2020/02/27 18:17:00 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/03/02 17:52:39 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,13 @@ typedef struct 	s_room
 	int				pos;
 }				t_room;
 
+typedef struct	s_path
+{
+	int				**shortest;
+	int				nb_shortest_paths;
+	struct s_path	*next;
+}				t_path;
+
 typedef struct 	s_lem
 {
 	int		**links;
@@ -62,7 +69,12 @@ typedef struct 	s_lem
 	int		c_start;
 	int		c_end;
 	int		room_amount;
-	int		paths[100][100];
+	int		**paths;
+	int		nb_paths;
+	int		**filtered_short;
+	int		**filtered_rest;
+	int		*short_pos;
+	int		bad_path;
 	t_room	**rooms;
 	t_list	*name_list;
 	t_link	*link_list;
@@ -100,6 +112,15 @@ void			initiate_structs(t_ants *ants, t_lem *lem_in);
 void			add_rooms(char *type, char **line, t_lem *lem_in);
 
 /*
+** ------ allocate_memory.c ------
+*/
+
+void			room_malloc(t_lem *lem_in);
+void    		links_malloc(t_lem *lem_in);
+void			paths_malloc(t_lem *lem_in);
+void			filtered_malloc(t_lem *lem_in);
+
+/*
 ** ------ add_links.c ------
 */
 
@@ -133,6 +154,20 @@ void			ft_enqueue(t_queue *queue, int content);
 */
 
 void			create_paths(t_lem *lem, int level);
+t_path			*path(int **arr_of_paths, int k, t_lem *lem_in);
+
+/*
+** ------ sort_int_array.c ------
+*/
+
+int				ft_path_len(int *path_arr);
+
+
+/*
+** ------ sort_paths.c ------
+*/
+
+void			sort_paths(t_path **shortest_path, t_lem *lem_in, int level);
 
 /*
 ** ------ error.c ------

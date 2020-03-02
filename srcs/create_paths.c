@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 09:48:54 by gmolin            #+#    #+#             */
-/*   Updated: 2020/02/27 18:14:55 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/03/02 18:15:08 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,24 @@
 static int		check_visited(t_lem *lem, int level, int nb)
 {
 	int i;
+	// int k;
 
 	i = 0;
-	while (lem->paths[level][i])
+	// k = 0;
+	// while (k < lem->room_amount - 1)
+	// {
+		// i = 0;
+	if (nb != lem->room_amount - 1 && nb == 0)
 	{
-		if (lem->paths[level][i] == nb)
-			return (0);
-		i++;
+		while (lem->paths[level][i])
+		{
+			if (lem->paths[level][i] == nb)
+				return (0);
+			i++;
+		}
 	}
+	// 	k++;
+	// }
 	return (1);
 }
 
@@ -63,6 +73,7 @@ static void		check_dead_end(t_lem *lem, int level, int pos, int i)
 		}
 	}
 }
+
 void			create_paths(t_lem *lem, int level)
 {
 	int	pos;
@@ -83,9 +94,10 @@ void			create_paths(t_lem *lem, int level)
 			pos = i;
 			i = 0;
 			c++;
-			if (pos == 0)
+			if (pos == 0 )
 			{
 				lem->paths[level][c] = 0;
+				lem->nb_paths += 1;
 				break ;
 			}
 			else 
@@ -94,11 +106,4 @@ void			create_paths(t_lem *lem, int level)
 		i++;
 	}
 	check_dead_end(lem, level, pos, i);
-	i = 0;
-	while (lem->paths[level][i])
-	{
-		ft_printf("%d ", lem->paths[level][i]);
-		i++;
-	}
-	ft_printf("%d \n", lem->paths[level][i]);
 }
