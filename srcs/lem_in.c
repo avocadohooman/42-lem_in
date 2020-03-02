@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:04 by hopham            #+#    #+#             */
-/*   Updated: 2020/03/02 11:14:54 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/03/02 13:04:42 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ static void testing_env(t_ants *ants, t_path *path, t_lem *lem_in, int level)
 	}
 	ft_printf("Filtered paths:\n");
 	i = 0;
-	while (i < 1)
+	while (i < 4)
 	{
 		k = 0;
 		while (lem_in->filtered[i][k])
@@ -129,7 +129,7 @@ int			main(void)
 		i++;
 	}
 	shortest_path = path(lem_in->paths, i, lem_in);
-	sort_paths(shortest_path, lem_in, i);
+	sort_paths(&shortest_path, lem_in, i);
 	testing_env(ants, shortest_path, lem_in, i);
 	return (0);
 }

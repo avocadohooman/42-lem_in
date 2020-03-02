@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:29 by hopham            #+#    #+#             */
-/*   Updated: 2020/03/02 11:15:20 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/03/02 12:12:40 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,7 +157,7 @@ t_path			*path(int **arr_of_paths, int k, t_lem *lem_in);
 ** ------ sort_paths.c ------
 */
 
-void			sort_paths(t_path *shortest_path, t_lem *lem_in, int level);
+void			sort_paths(t_path **shortest_path, t_lem *lem_in, int level);
 
 /*
 ** ------ error.c ------
