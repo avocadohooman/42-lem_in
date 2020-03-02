@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:04 by hopham            #+#    #+#             */
-/*   Updated: 2020/02/28 16:39:47 by hopham           ###   ########.fr       */
+/*   Updated: 2020/03/02 11:14:54 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,19 @@ static void testing_env(t_ants *ants, t_path *path, t_lem *lem_in, int level)
 		ft_printf("%d\n", path->shortest[i][k]);
 		i++;
 	}
+	ft_printf("Filtered paths:\n");
+	i = 0;
+	while (i < 1)
+	{
+		k = 0;
+		while (lem_in->filtered[i][k])
+		{
+			ft_printf("%i -> ", lem_in->filtered[i][k]);
+			k++;
+		}
+		ft_printf("%d\n", lem_in->filtered[i][k]);
+		i++;
+	}
 }
 
 int			main(void)
@@ -115,7 +128,8 @@ int			main(void)
 		create_paths(lem_in, i);
 		i++;
 	}
-	shortest_path = path(lem_in->paths, i);
+	shortest_path = path(lem_in->paths, i, lem_in);
+	sort_paths(shortest_path, lem_in, i);
 	testing_env(ants, shortest_path, lem_in, i);
 	return (0);
 }

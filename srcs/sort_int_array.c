@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_int_array.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:36:06 by hopham            #+#    #+#             */
-/*   Updated: 2020/02/28 16:38:34 by hopham           ###   ########.fr       */
+/*   Updated: 2020/03/02 10:49:07 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	shortest(int **arr_of_paths, int k)
 	return (min);
 }
 
-t_path	*path(int **arr_of_paths, int k)
+t_path	*path(int **arr_of_paths, int k, t_lem *lem_in)
 {
 	int		i;
 	int		j;
@@ -60,6 +60,7 @@ t_path	*path(int **arr_of_paths, int k)
 			path_lst->shortest[j] = (int*)ft_memalloc(sizeof(int) * 1000);
 			path_lst->shortest[j] = arr_of_paths[i];
 			j++;
+			lem_in->short_pos = i;
 		}
 		i++;
 	}

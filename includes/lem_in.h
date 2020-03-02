@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:29 by hopham            #+#    #+#             */
-/*   Updated: 2020/02/28 16:38:15 by hopham           ###   ########.fr       */
+/*   Updated: 2020/03/02 11:15:20 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ typedef struct 	s_lem
 	int		c_end;
 	int		room_amount;
 	int		**paths;
-	// int		paths[100][100];
+	int		**filtered;
+	int		short_pos;
 	t_room	**rooms;
 	t_list	*name_list;
 	t_link	*link_list;
@@ -114,6 +115,7 @@ void			add_rooms(char *type, char **line, t_lem *lem_in);
 void			room_malloc(t_lem *lem_in);
 void    		links_malloc(t_lem *lem_in);
 void			paths_malloc(t_lem *lem_in);
+void			filtered_malloc(t_lem *lem_in);
 
 /*
 ** ------ add_links.c ------
@@ -149,7 +151,13 @@ void			ft_enqueue(t_queue *queue, int content);
 */
 
 void			create_paths(t_lem *lem, int level);
-t_path			*path(int **arr_of_paths, int k);
+t_path			*path(int **arr_of_paths, int k, t_lem *lem_in);
+
+/*
+** ------ sort_paths.c ------
+*/
+
+void			sort_paths(t_path *shortest_path, t_lem *lem_in, int level);
 
 /*
 ** ------ error.c ------

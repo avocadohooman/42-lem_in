@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 09:48:54 by gmolin            #+#    #+#             */
-/*   Updated: 2020/02/28 14:15:41 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/03/02 10:20:50 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@ static int		check_visited(t_lem *lem, int level, int nb)
 	// int k;
 
 	i = 0;
-	// k = level;
-	// while (k < level)
+	// k = 0;
+	// level = level + 1;
+	// while (k < lem->room_amount - 1)
 	// {
 	// 	i = 0;
 		while (lem->paths[level][i])
@@ -28,7 +29,7 @@ static int		check_visited(t_lem *lem, int level, int nb)
 				return (0);
 			i++;
 		}
-		// level++;
+	// 	k++;
 	// }
 	return (1);
 }
