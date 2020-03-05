@@ -1,3 +1,5 @@
+#Given 1000 nodes, 10% density
+#ANTS
 10000
 ##start
 S 1 1

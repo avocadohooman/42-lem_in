@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   bfs_queue.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 11:10:39 by hopham            #+#    #+#             */
-/*   Updated: 2020/02/26 09:31:11 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/03/03 11:24:38 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-t_queue			*create_queue(void)
+t_queue	*create_queue(void)
 {
 	t_queue	*queue;
 
@@ -22,38 +22,43 @@ t_queue			*create_queue(void)
 	return (queue);
 }
 
-void			pop_first_value(t_queue *queue)
+t_list	*pop_first_value(t_queue *queue)
 {
-	t_node 	*next_node;
-	t_node	*tmp;
+	t_list	*tmp;
 
-	if (!(queue) || !(queue->first))
-		return ;
+	if (!(queue->first))
+		return (NULL);
 	tmp = queue->first;
-	queue->pop = queue->first->content;
-	next_node = queue->first->next;
-	queue->first = next_node;
-	free(tmp);
+	queue->first = queue->first->next;
+	return (tmp);
 }
 
-void			ft_enqueue(t_queue *queue, int content)
+int		pop_to_visit(t_queue *to_visit)
 {
-    t_node  *new;
-    t_node  *tmp;
-	
-    if (!(queue))
-        return ;
-    if (!(new = (t_node*)ft_memalloc(sizeof(t_node))))
-        ft_error("ERROR: allocate memory node");
-    new->content = content;
-    new->next = NULL;
-    tmp = queue->first;
-    if (!(tmp))
-    {
-        queue->first = new;
-        return ;
-    }
-    while (tmp->next)
-        tmp = tmp->next;
-    tmp->next = new;
+	t_list	*tmp;
+	int		room;
+
+	tmp = pop_first_value(to_visit);
+	room = dereference((int*)tmp->content);
+	free(tmp->content);
+	free(tmp);
+	return (room);
 }
+
+void	ft_enqueue(t_queue *queue, t_list *new)
+{
+	t_list	*tmp;
+
+    new->next = NULL;
+	tmp = NULL;
+	if (!queue->first)
+        queue->first = new;
+    else
+	{
+		tmp = queue->first;
+		while (tmp->next)
+        	tmp = tmp->next;
+    	tmp->next = new;
+	}
+}
+

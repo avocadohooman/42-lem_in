@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:29 by hopham            #+#    #+#             */
-/*   Updated: 2020/03/02 12:12:40 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/03/05 13:52:22 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #include "ft_printf.h"
 #include "get_next_line.h"
 #include <stdio.h>
+
 
 /*
 ** ------ STRUCTS ------
@@ -40,11 +41,20 @@ typedef struct	s_node
 	struct s_node	*next;
 }				t_node;
 
+typedef struct	s_path
+{
+	t_node			*nodes;
+	t_list			*first;
+	struct	s_path	*next;
+}				t_path;
+
 typedef struct	s_queue
 {
 	int		pop;
-	t_node	*first;
-}				t_queue;
+	t_path	*path_list;
+	t_node	*first_node;
+	t_list	*first;
+}				t_queue;	
 
 typedef struct 	s_room
 {
@@ -52,13 +62,6 @@ typedef struct 	s_room
 	unsigned int	visited;
 	int				pos;
 }				t_room;
-
-typedef struct	s_path
-{
-	int				**shortest;
-	int				nb_shortest_paths;
-	struct s_path	*next;
-}				t_path;
 
 typedef struct 	s_lem
 {
@@ -69,9 +72,7 @@ typedef struct 	s_lem
 	int		c_start;
 	int		c_end;
 	int		room_amount;
-	int		**paths;
-	int		**filtered;
-	int		short_pos;
+	int		paths[100][100];
 	t_room	**rooms;
 	t_list	*name_list;
 	t_link	*link_list;
@@ -109,15 +110,6 @@ void			initiate_structs(t_ants *ants, t_lem *lem_in);
 void			add_rooms(char *type, char **line, t_lem *lem_in);
 
 /*
-** ------ allocate_memory.c ------
-*/
-
-void			room_malloc(t_lem *lem_in);
-void    		links_malloc(t_lem *lem_in);
-void			paths_malloc(t_lem *lem_in);
-void			filtered_malloc(t_lem *lem_in);
-
-/*
 ** ------ add_links.c ------
 */
 
@@ -136,28 +128,35 @@ void			add_links_to_arrays(t_lem *lem_in);
 ** ------ path_search.c ------
 */
 
-int				path_search(t_lem *lem_in);
+// int				path_search(t_lem *lem_in);
+t_path			*another_path_search(t_lem *lem_in);
 
 /*
 ** ------ bfs_queue.c ------
 */
 
 t_queue			*create_queue(void);
-void			pop_first_value(t_queue *queue);
-void			ft_enqueue(t_queue *queue, int content);
+t_list			*pop_first_value(t_queue *queue);
+int				pop_to_visit(t_queue *to_visit);
+void			ft_enqueue(t_queue *queue, t_list *new);
+t_list			*new_list(int i);
+t_list			*get_connecting_rooms(int visiting, int *visited, t_lem *lem);
+void			visit(int visiting, t_lem *lem);
 
 /*
 ** ------ create_paths.c ------
 */
 
 void			create_paths(t_lem *lem, int level);
-t_path			*path(int **arr_of_paths, int k, t_lem *lem_in);
+t_list			*path_search(t_lem *lem_in, int *visited);
+int				dereference(int *p);
+t_list			*get_path_list(t_lem *lem);
 
 /*
-** ------ sort_paths.c ------
+** ------ assign_ants_to_paths.c ------
 */
 
-void			sort_paths(t_path **shortest_path, t_lem *lem_in, int level);
+void			find_ants_nb_in_path(t_list *paths, int ants);
 
 /*
 ** ------ error.c ------

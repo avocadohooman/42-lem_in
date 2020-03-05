@@ -1,23 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd.c                                        :+:      :+:    :+:   */
+/*   array_append.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/21 14:42:30 by hopham            #+#    #+#             */
-/*   Updated: 2019/10/23 09:29:11 by hopham           ###   ########.fr       */
+/*   Created: 2020/02/27 17:24:17 by hopham            #+#    #+#             */
+/*   Updated: 2020/02/27 17:24:52 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** Adds the element "new" at the beginnning of the list.
-*/
-
-#include "libft.h"
-
-void	ft_lstadd(t_list **alst, t_list *new)
-{
-	new->next = *alst;
-	*alst = new;
-}
