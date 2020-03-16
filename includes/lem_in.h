@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
+/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:29 by hopham            #+#    #+#             */
-/*   Updated: 2020/03/16 19:40:09 by HoangPham        ###   ########.fr       */
+/*   Updated: 2020/03/16 20:21:36 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ typedef struct 	s_lem
 	int		c_start;
 	int		c_end;
 	int		room_amount;
-	int		paths[100][100];
 	int		steps;
 	t_room	**rooms;
 	t_list	*name_list;
@@ -129,7 +128,6 @@ void			add_links_to_arrays(t_lem *lem_in);
 ** ------ path_search.c ------
 */
 
-// int				path_search(t_lem *lem_in);
 t_path			*another_path_search(t_lem *lem_in);
 
 /*

@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/15 15:40:13 by gmolin            #+#    #+#             */
-/*   Updated: 2020/03/16 17:45:04 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/03/16 20:23:11 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void            print_ants(int nb_ants, t_lem *lem_in, t_ants *ants)
 {
 	t_list	*ant_list;
     t_list  *path_stack;
-	int		can_continue;
+	int		move_forward;
 	int		ants_left;
 
 	if (!ants)
@@ -88,17 +88,17 @@ void            print_ants(int nb_ants, t_lem *lem_in, t_ants *ants)
 	path_stack = get_path_list(lem_in);
 	find_ants_nb_in_path(path_stack, ants->amount);
 	ant_list = NULL;
-	can_continue = 1;
+	move_forward = 1;
 	ants_left = nb_ants;
-	while (can_continue)
+	while (move_forward)
 	{
-		move_ants(&ant_list, lem_in, &can_continue);
-        if (ant_list && can_continue)
+		move_ants(&ant_list, lem_in, &move_forward);
+        if (ant_list && move_forward)
 		{
 			lem_in->steps += 1;
 			ft_putchar('\n');
 		}
-		can_continue = add_ants(path_stack, &ant_list, nb_ants, &ants_left) || can_continue;
+		move_forward = add_ants(path_stack, &ant_list, nb_ants, &ants_left) || move_forward;
 	}
 	ft_printf("\nTotal Amount of Steps: %d\n", lem_in->steps);
 }
