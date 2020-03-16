@@ -6,7 +6,7 @@
 #    By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/17 11:13:09 by hopham            #+#    #+#              #
-#    Updated: 2020/03/16 13:15:23 by gmolin           ###   ########.fr        #
+#    Updated: 2020/03/16 17:04:45 by gmolin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,18 +29,18 @@ INCLUDES = -I ./libft/ft_printf/includes/ -I ./libft/libft/includes/ -I ./includ
 all: library $(NAME)
 
 library:
-		@make -s -C $(LIB_FOLDER)
+		make -C $(LIB_FOLDER)
 
 $(NAME): all
-		@gcc  $(FLAGS) $(INCLUDES) -c $(FILES_C)
-		@gcc $(FLAGS) -o $(NAME) $(INCLUDES) $(OBJ) $(LIB)
+		gcc  $(FLAGS) $(INCLUDES) -c $(FILES_C)
+		gcc $(FLAGS) -o $(NAME) $(INCLUDES) $(OBJ) $(LIB)
 
 clean:
-		@rm -rf $(OBJ)
+		rm -rf $(OBJ)
 		make clean -C $(LIB_FOLDER)
 
 fclean: clean
-		@rm -rf $(NAME)
+		rm -rf $(NAME)
 		make fclean -C $(LIB_FOLDER)
 
 re: fclean all

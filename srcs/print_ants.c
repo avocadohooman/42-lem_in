@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/15 15:40:13 by gmolin            #+#    #+#             */
-/*   Updated: 2020/03/16 16:55:51 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/03/16 17:39:31 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static void     print_ant(t_ants *ant, t_lem *lem_in)
 	ft_putchar('-');
 	ft_putstr(name);
 	ft_putchar(' ');
+	lem_in->steps += 1;
 }
 
 static void     move_ants(t_list **ant_list, t_lem *lem_in, int *can_continue)
@@ -38,7 +39,7 @@ static void     move_ants(t_list **ant_list, t_lem *lem_in, int *can_continue)
     while (i)
     {
         current = (t_ants *)i->content;
-		if (current->links->content)
+		if (current->links->next)
 		{
 			*can_continue = 1;
 			current->links = current->links->next;
@@ -59,7 +60,7 @@ static int     add_ants(t_list *path_stack, t_list **ant_list, int nb_ants, int 
 		return (0);
 	i = path_stack;
 	tr = 0;
-	while (i && i->content_size && *ants_left >= 1)
+	while (i && i->content_size > 0 && *ants_left > 0)
 	{
 		ta = (t_ants *)malloc(sizeof(t_ants));
 		ta->links = (t_list *)i->content;
@@ -97,4 +98,5 @@ void            print_ants(int nb_ants, t_lem *lem_in, t_ants *ants)
 			ft_putchar('\n');
         can_continue = add_ants(path_stack, &ant_list, nb_ants, &ants_left) || can_continue;
 	}
+	ft_printf("\nTotal Amount of Steps: %d\n", lem_in->steps);
 }

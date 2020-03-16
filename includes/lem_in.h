@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:29 by hopham            #+#    #+#             */
-/*   Updated: 2020/03/16 15:12:43 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/03/16 17:11:02 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct	s_node
 	struct s_node	*next;
 }				t_node;
 
-typedef struct	s_pathw
+typedef struct	s_path
 {
 	t_node			*nodes;
 	t_list			*first;
@@ -73,6 +73,7 @@ typedef struct 	s_lem
 	int		c_end;
 	int		room_amount;
 	int		paths[100][100];
+	int		steps;
 	t_room	**rooms;
 	t_list	*name_list;
 	t_link	*link_list;
