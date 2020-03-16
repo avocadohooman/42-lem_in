@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/15 15:40:13 by gmolin            #+#    #+#             */
-/*   Updated: 2020/03/16 15:28:06 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/03/16 16:55:51 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void     print_ant(t_ants *ant, t_lem *lem_in)
 
 	n = ant->amount;
 	room_pointer = (int *)ant->links->content;
-    name = &lem_in->name[*room_pointer];
+    name = lem_in->rooms[*room_pointer]->name;
 	ft_putchar('L');
 	ft_putnbr(n);
 	ft_putchar('-');

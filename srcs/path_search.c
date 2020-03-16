@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:24:14 by gmolin            #+#    #+#             */
-/*   Updated: 2020/03/16 13:18:43 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/03/16 16:36:26 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,12 +86,12 @@ t_list	*path_search(t_lem *lem_in, int *visited)
 			i = i->next;
 		}
 	}
-	int a = 0;											/// from line 83 to 88: print room_pointers array
-	while (a < lem_in->room_amount)                   
-	{
-		ft_printf("%i, ", room_pointers[a]);      
-		a++;
-	}
+	// int a = 0;											/// from line 83 to 88: print room_pointers array
+	// while (a < lem_in->room_amount)                   
+	// {
+	// 	ft_printf("%i, ", room_pointers[a]);      
+	// 	a++;
+	// }
 	if (visited[end] == 1)
 	{
 		path = get_path(lem_in, room_pointers);
