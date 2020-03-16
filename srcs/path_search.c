@@ -3,101 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   path_search.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:24:14 by gmolin            #+#    #+#             */
-/*   Updated: 2020/03/16 16:36:26 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/03/16 19:52:20 by HoangPham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void	get_room_pointers(t_lem *lem, int *room_pointers)
+int		dereference(int *p)
 {
-	int	i;
-
-	i = 0;
-	while (i < lem->room_amount)
-	{
-		room_pointers[i] = i;
-		i++;
-	}
-}
-
-t_list	*get_path(t_lem *lem, int *rooms_pointers)
-{
-	t_list	*path;
-	t_list	*get;
-	int		i;
-	int		end;
-	int		length;
-
-	path = NULL;
-	end = lem->room_amount - 1;
-	i = end;
-	length = 0;
-	while (rooms_pointers[i] != i)
-	{
-		ft_lstadd(&path, new_list(i));
-		i = rooms_pointers[i];
-		length++;
-	}
-	if (i != end)
-		ft_lstadd(&path, new_list(i));
-	get = (t_list*)ft_memalloc(sizeof(t_list));
-	get->content = path;
-	get->content_size = length - 1;
-	get->next = NULL;
-	return (get);
-}
-
-t_list	*path_search(t_lem *lem_in, int *visited)
-{
-	t_queue	*queue;
-	t_list	*connecting_rooms;
-	t_list	*i;
-	t_list	*path;
-	int		**arr;
-	int		room;
-	int		end;
-	// int		*visited;
-	int		*room_pointers;
-
-	// if (!(visited = (int*)ft_memalloc(sizeof(int) * lem_in->room_amount)))
-	// 	ft_error("ERROR: allocate memory array visited");
-	room_pointers = (int*)ft_memalloc(sizeof(int) * lem_in->room_amount);
-	get_room_pointers(lem_in, room_pointers);
-	arr = lem_in->links;
-	end = lem_in->room_amount - 1;
-	queue = create_queue();
-	ft_enqueue(queue, new_list(0));
-	while (queue->first != NULL)
-	{
-		room = pop_to_visit(queue);
-		visited[room] = 1;
-		connecting_rooms = get_connecting_rooms(room, visited, lem_in);
-		i = connecting_rooms;
-		while (i)
-		{
-			if (dereference((int*)i->content) != end || room_pointers[end] == end)
-				room_pointers[dereference((int*)i->content)] = room;
-			visited[dereference((int*)i->content)] = 1;
-			ft_enqueue(queue, new_list(dereference((int*)i->content)));
-			i = i->next;
-		}
-	}
-	// int a = 0;											/// from line 83 to 88: print room_pointers array
-	// while (a < lem_in->room_amount)                   
-	// {
-	// 	ft_printf("%i, ", room_pointers[a]);      
-	// 	a++;
-	// }
-	if (visited[end] == 1)
-	{
-		path = get_path(lem_in, room_pointers);
-		return (path);
-	}
-	return (NULL);
+	return (*p);
 }
 
 void	copy_path_visited(int *room_visited, int *path_visited, int len)
@@ -141,7 +58,7 @@ t_list	*get_path_list(t_lem *lem)
 	if (!(room_visited = (int*)ft_memalloc(sizeof(int) * lem->room_amount)))
 		ft_error("ERROR: allocate memory array visited");
 	paths = create_queue();
-	while ((pa = path_search(lem, room_visited)) != NULL)
+	while ((pa = path_search(lem, room_visited, lem->room_amount - 1)) != NULL)
 	{
 		remove_visited(pa, path_visited, lem->room_amount);
 		copy_path_visited(room_visited, path_visited, lem->room_amount);

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+         #
+#    By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/17 11:13:09 by hopham            #+#    #+#              #
-#    Updated: 2020/03/16 17:04:45 by gmolin           ###   ########.fr        #
+#    Updated: 2020/03/16 18:56:10 by HoangPham        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ FLAGS = -Wextra -Werror -Wall -g
 SRCS = ./srcs/
 FUNC = lem_in.c input_scan.c error.c initiate_structs.c add_rooms.c add_links.c \
 		create_arrays.c allocate_memory.c bfs_queue.c create_paths.c \
-		path_search.c another_path_search.c assign_ants_to_paths.c print_ants.c
+		path_search.c path_search_help.c assign_ants_to_paths.c print_ants.c
 
 FILES_C = $(addprefix $(SRCS), $(FUNC))
 OBJ = $(FUNC:.c=.o)

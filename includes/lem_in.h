@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:29 by hopham            #+#    #+#             */
-/*   Updated: 2020/03/16 17:11:02 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/03/16 19:40:09 by HoangPham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,7 @@ void			visit(int visiting, t_lem *lem);
 */
 
 void			create_paths(t_lem *lem, int level);
-t_list			*path_search(t_lem *lem_in, int *visited);
+t_list			*path_search(t_lem *lem_in, int *visited, int end);
 int				dereference(int *p);
 t_list			*get_path_list(t_lem *lem);
 
