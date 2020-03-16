@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:04 by hopham            #+#    #+#             */
-/*   Updated: 2020/03/16 17:07:19 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/03/16 17:44:15 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,6 @@ int			main(void)
 	input_scan(lem_in);
 	add_room_to_array(lem_in);
 	add_links_to_arrays(lem_in);
-	// path_stack = get_path_list(lem_in);
-	// find_ants_nb_in_path(path_stack, ants->amount);
 	// testing_env(ants, lem_in);
 	print_ants(ants->amount, lem_in, ants);
 	return (0);
