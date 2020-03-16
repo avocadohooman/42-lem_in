@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+         #
+#    By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/17 11:13:09 by hopham            #+#    #+#              #
-#    Updated: 2020/03/05 13:57:11 by hopham           ###   ########.fr        #
+#    Updated: 2020/03/16 13:15:23 by gmolin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ FLAGS = -Wextra -Werror -Wall -g
 SRCS = ./srcs/
 FUNC = lem_in.c input_scan.c error.c initiate_structs.c add_rooms.c add_links.c \
 		create_arrays.c allocate_memory.c bfs_queue.c create_paths.c \
-		path_search.c another_path_search.c assign_ants_to_paths.c
+		path_search.c another_path_search.c assign_ants_to_paths.c print_ants.c
 
 FILES_C = $(addprefix $(SRCS), $(FUNC))
 OBJ = $(FUNC:.c=.o)
@@ -29,18 +29,18 @@ INCLUDES = -I ./libft/ft_printf/includes/ -I ./libft/libft/includes/ -I ./includ
 all: library $(NAME)
 
 library:
-		make -C $(LIB_FOLDER)
+		@make -s -C $(LIB_FOLDER)
 
 $(NAME): all
-		gcc $(FLAGS) $(INCLUDES) -c $(FILES_C)
-		gcc $(FLAGS) -o $(NAME) $(INCLUDES) $(OBJ) $(LIB)
+		@gcc  $(FLAGS) $(INCLUDES) -c $(FILES_C)
+		@gcc $(FLAGS) -o $(NAME) $(INCLUDES) $(OBJ) $(LIB)
 
 clean:
-		rm -rf $(OBJ)
+		@rm -rf $(OBJ)
 		make clean -C $(LIB_FOLDER)
 
 fclean: clean
-		rm -rf $(NAME)
+		@rm -rf $(NAME)
 		make fclean -C $(LIB_FOLDER)
 
 re: fclean all

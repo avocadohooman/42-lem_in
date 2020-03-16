@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:29 by hopham            #+#    #+#             */
-/*   Updated: 2020/03/05 13:52:22 by hopham           ###   ########.fr       */
+/*   Updated: 2020/03/16 15:12:43 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct	s_node
 	struct s_node	*next;
 }				t_node;
 
-typedef struct	s_path
+typedef struct	s_pathw
 {
 	t_node			*nodes;
 	t_list			*first;
@@ -158,6 +158,12 @@ t_list			*get_path_list(t_lem *lem);
 
 void			find_ants_nb_in_path(t_list *paths, int ants);
 
+
+/*
+** ------ assign_ants_to_paths.c ------
+*/
+
+void			print_ants(int nb_ants, t_lem *lem_in, t_ants *ants);
 /*
 ** ------ error.c ------
 */

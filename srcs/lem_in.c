@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:04 by hopham            #+#    #+#             */
-/*   Updated: 2020/03/05 13:56:31 by hopham           ###   ########.fr       */
+/*   Updated: 2020/03/16 15:13:44 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,56 +34,56 @@ static int	get_ants(void)
 	return (ant_numbers);
 }
 
-static void testing_env(t_ants *ants, t_lem *lem_in, t_list *path_stack)
-{
-	int i;
+// static void testing_env(t_ants *ants, t_lem *lem_in, t_list *path_stack)
+// {
+// 	int i;
 
-	i = 0;
-	ft_printf("\nAmount of ants: %d\nStarting room: %s\nEnding room: %s\n", ants->amount, lem_in->start, lem_in->end);
-	while (lem_in->link_list && i < lem_in->room_amount)
-	{
-		ft_printf("room name: %10s -> room index: %d\n", lem_in->rooms[i]->name, lem_in->rooms[i]->pos);
-		lem_in->link_list = lem_in->link_list->next;
-		i++;
-	}
-	ants->amount = ants->amount;
+// 	i = 0;
+// 	ft_printf("\nAmount of ants: %d\nStarting room: %s\nEnding room: %s\n", ants->amount, lem_in->start, lem_in->end);
+// 	while (lem_in->link_list && i < lem_in->room_amount)
+// 	{
+// 		ft_printf("room name: %10s -> room index: %d\n", lem_in->rooms[i]->name, lem_in->rooms[i]->pos);
+// 		lem_in->link_list = lem_in->link_list->next;
+// 		i++;
+// 	}
+// 	ants->amount = ants->amount;
 
-	int  k = 0;
-	i = 0;
-	while (i < lem_in->room_amount)
-	{
-		k = 0;
-		ft_printf("room index %d: ", i);
-		while (k < lem_in->room_amount)
-		{
-			ft_printf("%d ",lem_in->links[i][k]);
-			k++;
-		}
-		ft_printf("\n");
-		i++;
-	}
-	ft_printf("\n");
-	ft_printf("PATHS FOUND:\n");
-	t_list	*path;
-	while (path_stack)
-	{
-		path = path_stack->content;
-		while (path)
-		{
-			ft_printf("%i -> ", dereference((int*)path->content));
-			path = path->next;
-		}
-		ft_printf("\n");
-		ft_printf("Numbers of ants: %i\n", path_stack->content_size);
-		path_stack = path_stack->next;
-	}
-}
+// 	int  k = 0;
+// 	i = 0;
+// 	while (i < lem_in->room_amount)
+// 	{
+// 		k = 0;
+// 		ft_printf("room index %d: ", i);
+// 		while (k < lem_in->room_amount)
+// 		{
+// 			ft_printf("%d ",lem_in->links[i][k]);
+// 			k++;
+// 		}
+// 		ft_printf("\n");
+// 		i++;
+// 	}
+// 	ft_printf("\n");
+// 	ft_printf("PATHS FOUND:\n");
+// 	t_list	*path;
+// 	while (path_stack)
+// 	{
+// 		path = path_stack->content;
+// 		while (path)
+// 		{
+// 			ft_printf("%i -> ", dereference((int*)path->content));
+// 			path = path->next;
+// 		}
+// 		ft_printf("\n");
+// 		ft_printf("Numbers of ants: %i\n", path_stack->content_size);
+// 		path_stack = path_stack->next;
+// 	}
+// }
 
 int			main(void)
 {
 	t_ants 	*ants;
 	t_lem 	*lem_in;
-	t_list	*path_stack;
+	// t_list	*path_stack;
 
 	if (!(ants = (t_ants*)ft_memalloc(sizeof(t_ants))))
 		return (0);
@@ -94,23 +94,9 @@ int			main(void)
 	input_scan(lem_in);
 	add_room_to_array(lem_in);
 	add_links_to_arrays(lem_in);
-	//path_search(lem_in);
-	// int i = 0;
-	// while (i < 100)
-	// {
-	// 	create_paths(lem_in, i);
-	// 	i++;
-	// }
-	// int i = 0;
-	// while (path_search(lem_in))
-	// {
-	// 	create_paths(lem_in, i);
-	// 	i++;
-	// }
-	// if (!path_search(lem_in))
-	// 	ft_error("ERROR: no path");
-	path_stack = get_path_list(lem_in);
-	find_ants_nb_in_path(path_stack, ants->amount);
-	testing_env(ants, lem_in, path_stack);
+	// path_stack = get_path_list(lem_in);
+	// find_ants_nb_in_path(path_stack, ants->amount);
+	print_ants(ants->amount, lem_in, ants);
+	// testing_env(ants, lem_in, path_stack);
 	return (0);
 }
