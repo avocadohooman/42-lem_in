@@ -6,7 +6,7 @@
 #    By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/17 11:13:09 by hopham            #+#    #+#              #
-#    Updated: 2020/03/16 20:18:21 by gmolin           ###   ########.fr        #
+#    Updated: 2020/03/17 15:23:31 by gmolin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ FLAGS = -Wextra -Werror -Wall -g
 
 SRCS = ./srcs/
 FUNC = lem_in.c input_scan.c error.c initiate_structs.c add_rooms.c add_links.c \
-		create_arrays.c allocate_memory.c bfs_queue.c \
+		create_arrays.c allocate_memory.c bfs_queue.c delete.c \
 		path_search.c path_search_help.c assign_ants_to_paths.c print_ants.c
 
 FILES_C = $(addprefix $(SRCS), $(FUNC))

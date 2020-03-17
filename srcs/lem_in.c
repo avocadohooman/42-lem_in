@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
+/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:04 by hopham            #+#    #+#             */
-/*   Updated: 2020/03/17 13:11:49 by HoangPham        ###   ########.fr       */
+/*   Updated: 2020/03/17 15:27:54 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,8 @@ int			main(void)
 	add_links_to_arrays(lem_in);
 	ft_printf("\n");
 	print_ants(ants->amount, lem_in, ants);
+	free(ants);
+	free(lem_in);
+	while (1);
 	return (0);
 }

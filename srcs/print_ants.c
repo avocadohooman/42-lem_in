@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_ants.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
+/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/15 15:40:13 by gmolin            #+#    #+#             */
-/*   Updated: 2020/03/17 11:48:47 by HoangPham        ###   ########.fr       */
+/*   Updated: 2020/03/17 15:27:03 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,4 +101,6 @@ void            print_ants(int nb_ants, t_lem *lem_in, t_ants *ants)
 		move_forward = add_ants(path_stack, &ant_list, nb_ants, &ants_left) || move_forward;
 	}
 	ft_printf("\nTotal Amount of Steps: %d\n", lem_in->steps);
+	ft_lstdel(&path_stack, &delete_paths);
+	ft_lstdel(&ant_list, &delete_generic);
 }

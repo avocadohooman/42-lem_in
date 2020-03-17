@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
+/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:29 by hopham            #+#    #+#             */
-/*   Updated: 2020/03/17 12:34:06 by HoangPham        ###   ########.fr       */
+/*   Updated: 2020/03/17 15:22:26 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,12 +141,19 @@ void			find_ants_nb_in_path(t_list *paths, int ants);
 */
 
 void			print_ants(int nb_ants, t_lem *lem_in, t_ants *ants);
+
 /*
 ** ------ error.c ------
 */
 
 void			ft_error(char *str);
-
 void			ft_strsplit_free(char **str);
+
+/*
+** ------ delete.c ------
+*/
+
+void			delete_generic(void *content, size_t content_size);
+void			delete_paths(void *content, size_t content_size);
 
 #endif
