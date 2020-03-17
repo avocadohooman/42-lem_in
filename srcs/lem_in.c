@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:04 by hopham            #+#    #+#             */
-/*   Updated: 2020/03/16 20:16:00 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/03/17 10:45:12 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,13 @@ static int	get_ants(void)
 	size_t		i;
 
 	i = 0;
-	get_next_line(0, &line);
+	while (1)
+	{
+		get_next_line(0, &line);
+		if (!ft_strstr(line, "#"))
+			break ;
+		ft_strdel(&line);
+	}
 	while (i < ft_strlen(line))
 	{
 		if (!ft_isdigit(line[i]))
@@ -83,7 +89,6 @@ int			main(void)
 {
 	t_ants 	*ants;
 	t_lem 	*lem_in;
-	// t_list	*path_stack;
 
 	if (!(ants = (t_ants*)ft_memalloc(sizeof(t_ants))))
 		return (0);
@@ -94,6 +99,7 @@ int			main(void)
 	input_scan(lem_in);
 	add_room_to_array(lem_in);
 	add_links_to_arrays(lem_in);
+	ft_printf("\n");
 	// testing_env(ants, lem_in);
 	print_ants(ants->amount, lem_in, ants);
 	return (0);
