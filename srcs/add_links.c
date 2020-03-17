@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_links.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 10:11:05 by gmolin            #+#    #+#             */
-/*   Updated: 2020/03/17 10:45:08 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/03/17 11:54:32 by HoangPham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void		add_links_to_list(t_link **list, t_link *new_link)
 	return ;
 }
 
-void		add_links(t_lem *rooms, char *line)
+void			add_links(t_lem *rooms, char *line)
 {
 	char	*from;
 	char	*to;

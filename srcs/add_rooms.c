@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_rooms.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 14:10:08 by hopham            #+#    #+#             */
-/*   Updated: 2020/03/16 17:41:47 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/03/17 11:54:20 by HoangPham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static	void	validate(t_lem *lem_in)
 	}
 }
 
-void	add_rooms(char *type, char **line, t_lem *lem_in)
+void			add_rooms(char *type, char **line, t_lem *lem_in)
 {
 	char	**strsplit;
 

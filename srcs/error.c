@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 15:58:09 by hopham            #+#    #+#             */
-/*   Updated: 2020/03/16 13:18:53 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/03/17 11:51:56 by HoangPham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 void	ft_error(char *str)
 {
-	perror(str);
+	ft_printf("%s\n", str);
 	exit(1);
 }

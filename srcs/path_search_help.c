@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   path_search_help.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 13:11:56 by hopham            #+#    #+#             */
-/*   Updated: 2020/03/16 20:18:52 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/03/17 11:45:10 by HoangPham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-t_list	*new_list(int i)
+t_list			*new_list(int i)
 {
 	t_list	*tmp;
 	int		*n;
@@ -26,7 +26,7 @@ t_list	*new_list(int i)
 	return (tmp);
 }
 
-t_list	*get_connecting_rooms(int visiting, int *visited, t_lem *lem)
+static t_list	*get_connecting_rooms(int visiting, int *visited, t_lem *lem)
 {
 	t_list	*node_list;
 	int		i;
@@ -46,7 +46,7 @@ t_list	*get_connecting_rooms(int visiting, int *visited, t_lem *lem)
 	return (node_list);
 }
 
-int	*get_room_pointers(t_lem *lem)
+static int		*get_room_pointers(t_lem *lem)
 {
 	int	i;
 	int	*room_pointers;
@@ -61,7 +61,7 @@ int	*get_room_pointers(t_lem *lem)
 	return (room_pointers);
 }
 
-t_list	*get_path(t_lem *lem, int *rooms_pointers)
+static t_list	*get_path(t_lem *lem, int *rooms_pointers)
 {
 	t_list	*path;
 	t_list	*get;

@@ -6,18 +6,18 @@
 /*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:24:14 by gmolin            #+#    #+#             */
-/*   Updated: 2020/03/16 19:52:20 by HoangPham        ###   ########.fr       */
+/*   Updated: 2020/03/17 11:43:43 by HoangPham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-int		dereference(int *p)
+int			dereference(int *p)
 {
 	return (*p);
 }
 
-void	copy_path_visited(int *room_visited, int *path_visited, int len)
+static void	copy_path_visited(int *room_visited, int *path_visited, int len)
 {
 	int	i;
 
@@ -29,7 +29,7 @@ void	copy_path_visited(int *room_visited, int *path_visited, int len)
 	}
 }
 
-void	remove_visited(t_list *pa, int *path_visited, int room_amount)
+static void	remove_visited(t_list *pa, int *path_visited, int room_amount)
 {
 	int		i;
 	t_list	*tmp;
@@ -45,7 +45,7 @@ void	remove_visited(t_list *pa, int *path_visited, int room_amount)
 	}
 }
 
-t_list	*get_path_list(t_lem *lem)
+t_list		*get_path_list(t_lem *lem)
 {
 	t_queue	*paths;
 	t_list	*paths_list;
