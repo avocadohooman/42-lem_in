@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 11:27:13 by hopham            #+#    #+#             */
-/*   Updated: 2020/03/17 10:37:12 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/03/17 11:18:51 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void		scanning_links(char **line, t_lem *room)
 
 static void		scanning_rooms(char **line, t_lem *room)
 {
-	(ft_strstr(*line, "##")) ? ft_printf("%s\n", *line) : 0;
+	(ft_strstr(*line, "##end") || ft_strstr(*line, "##start")) ? ft_printf("%s\n", *line) : 0;
 	if (ft_strcmp("##start", *line) == 0)
 	{
 		room->c_start++;
