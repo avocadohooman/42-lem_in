@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_scan.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 11:27:13 by hopham            #+#    #+#             */
-/*   Updated: 2020/03/17 11:18:51 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/03/17 13:21:39 by HoangPham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,14 @@ static void		scanning_rooms(char **line, t_lem *room)
 	if (ft_strcmp("##start", *line) == 0)
 	{
 		room->c_start++;
+		free(*line);
 		get_next_line(0, line);
 		(room->c_start == 1) ? add_rooms("start", line, room) : 0;
 	}
 	else if (ft_strcmp("##end", *line) == 0)
 	{
 		room->c_end++;
+		free(*line);
 		get_next_line(0, line);
 		(room->c_end == 1) ? add_rooms("end", line, room) : 0;
 	}

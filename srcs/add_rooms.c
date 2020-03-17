@@ -6,7 +6,7 @@
 /*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 14:10:08 by hopham            #+#    #+#             */
-/*   Updated: 2020/03/17 11:54:20 by HoangPham        ###   ########.fr       */
+/*   Updated: 2020/03/17 14:26:51 by HoangPham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ void			add_rooms(char *type, char **line, t_lem *lem_in)
 	strsplit = ft_strsplit(*line, ' ');
 	check_coordinates(strsplit);
 	if (!ft_strcmp(type, "start"))
-		lem_in->start = strsplit[0];
+		lem_in->start = ft_strdup(strsplit[0]);
 	else if (!ft_strcmp(type, "end"))
-		lem_in->end = strsplit[0];
+		lem_in->end = ft_strdup(strsplit[0]);
 	lem_in->name = strsplit[0];
 	if (lem_in->name_list)
 		ft_lstadd_end(&lem_in->name_list, ft_lstnew_str(lem_in->name));
@@ -66,4 +66,5 @@ void			add_rooms(char *type, char **line, t_lem *lem_in)
 	validate(lem_in);
 	ft_printf("%s\n", *line);
 	ft_strdel(line);
+	ft_strsplit_free(strsplit);
 }

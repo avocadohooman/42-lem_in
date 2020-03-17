@@ -6,7 +6,7 @@
 /*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:29 by hopham            #+#    #+#             */
-/*   Updated: 2020/03/17 11:48:50 by HoangPham        ###   ########.fr       */
+/*   Updated: 2020/03/17 12:34:06 by HoangPham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,5 +146,7 @@ void			print_ants(int nb_ants, t_lem *lem_in, t_ants *ants);
 */
 
 void			ft_error(char *str);
+
+void			ft_strsplit_free(char **str);
 
 #endif

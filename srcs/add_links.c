@@ -6,7 +6,7 @@
 /*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 10:11:05 by gmolin            #+#    #+#             */
-/*   Updated: 2020/03/17 11:54:32 by HoangPham        ###   ########.fr       */
+/*   Updated: 2020/03/17 15:00:59 by HoangPham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,13 @@ void			add_links(t_lem *rooms, char *line)
 
 	ft_printf("%s\n", line);
 	split = ft_strsplit(line, '-');
-	from = split[0];
-	to = split[1];
+	from = ft_strdup(split[0]);
+	to = ft_strdup(split[1]);
 	validate_link(rooms, from);
 	validate_link(rooms, to);
 	if (!rooms->link_list)
 		rooms->link_list = create_links_list(from, to);
 	else
 		add_links_to_list(&rooms->link_list, create_links_list(from, to));
+	ft_strsplit_free(split);
 }

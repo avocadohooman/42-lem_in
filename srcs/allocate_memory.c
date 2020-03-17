@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   allocate_memory.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 14:52:10 by hopham            #+#    #+#             */
-/*   Updated: 2020/02/26 11:28:19 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/03/17 13:50:41 by HoangPham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,17 @@ void    links_malloc(t_lem *lem_in)
             ft_error("ERROR: malloc problem links int");
         i++;
     }
+}
+
+void	ft_strsplit_free(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		ft_strdel(&str[i]);
+		i++;
+	}
+	free((void*)str);
 }

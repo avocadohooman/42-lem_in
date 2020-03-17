@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 10:30:32 by hopham            #+#    #+#             */
-/*   Updated: 2019/10/23 10:12:35 by hopham           ###   ########.fr       */
+/*   Updated: 2020/03/17 14:22:31 by HoangPham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_strdup(const char *src)
 	size = 0;
 	while (src[size])
 		size++;
-	dest = (char*)malloc(sizeof(char) * (size + 1));
+	dest = (char*)ft_memalloc(sizeof(char) * (size + 1));
 	if (dest == NULL)
 		return (NULL);
 	i = 0;

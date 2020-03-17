@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 17:10:45 by hopham            #+#    #+#             */
-/*   Updated: 2019/10/23 10:40:27 by hopham           ###   ########.fr       */
+/*   Updated: 2020/03/17 13:26:49 by HoangPham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 char	**ft_strsplit(char const *s, char c)
 {
 	char	*str;
+	char	**strplit;
 
 	if (!s || !c)
 		return (NULL);
@@ -31,5 +32,7 @@ char	**ft_strsplit(char const *s, char c)
 	if (!str)
 		return (NULL);
 	str[0] = c;
-	return (ft_strsplitcharset((char*)s, str));
+	strplit = ft_strsplitcharset((char*)s, str);
+	ft_strdel(&str);
+	return (strplit);
 }
