@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:04 by hopham            #+#    #+#             */
-/*   Updated: 2020/03/17 15:27:54 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/03/17 17:17:53 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,5 @@ int			main(void)
 	print_ants(ants->amount, lem_in, ants);
 	free(ants);
 	free(lem_in);
-	while (1);
 	return (0);
 }

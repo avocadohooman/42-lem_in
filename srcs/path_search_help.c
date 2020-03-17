@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path_search_help.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
+/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 13:11:56 by hopham            #+#    #+#             */
-/*   Updated: 2020/03/17 11:45:10 by HoangPham        ###   ########.fr       */
+/*   Updated: 2020/03/17 18:00:11 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ t_list	*path_search(t_lem *lem_in, int *visited, int end)
 				room_pointers[dereference((int*)i->content)] = room;
 			visited[dereference((int*)i->content)] = 1;
 			ft_enqueue(queue, new_list(dereference((int*)i->content)));
+			free(&i->content);
 			i = i->next;
 		}
 	}

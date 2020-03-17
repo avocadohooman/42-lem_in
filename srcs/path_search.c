@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:24:14 by gmolin            #+#    #+#             */
-/*   Updated: 2020/03/17 15:22:36 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/03/17 17:32:02 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ t_list		*get_path_list(t_lem *lem)
 	while ((pa = path_search(lem, room_visited, lem->room_amount - 1)) != NULL)
 	{
 		remove_visited(pa, path_visited, lem->room_amount);
-		copy_path_visited(room_visited, path_visited, lem->room_amount);
+		copy_path_visited(room_visited, path_visited, lem->room_amount);;
 		ft_enqueue(paths, pa);
 	}
 	paths_list = paths->first;
