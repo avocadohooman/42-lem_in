@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 13:11:56 by hopham            #+#    #+#             */
-/*   Updated: 2020/03/17 18:00:11 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/03/18 16:59:36 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static t_list	*get_connecting_rooms(int visiting, int *visited, t_lem *lem)
 	t_list	*node_list;
 	int		i;
 	int		end;
+	t_list 	*tmp;
 
 	end = lem->room_amount - 1;
 	if (visiting == end)
@@ -40,7 +41,10 @@ static t_list	*get_connecting_rooms(int visiting, int *visited, t_lem *lem)
 	while (i < lem->room_amount)
 	{
 		if (lem->links[visiting][i] == 1 && visited[i] == 0)
-			ft_lstadd(&node_list, new_list(i));
+		{
+			tmp = new_list(i);
+			ft_lstadd(&node_list, tmp);
+		}
 		i++;
 	}
 	return (node_list);
@@ -70,12 +74,13 @@ static t_list	*get_path(t_lem *lem, int *rooms_pointers)
 	int		length;
 
 	path = NULL;
+	get = NULL;
 	end = lem->room_amount - 1;
 	i = end;
 	length = 0;
 	while (rooms_pointers[i] != i)
 	{
-		ft_lstadd(&path, new_list(i));
+   		ft_lstadd(&path, new_list(i));
 		i = rooms_pointers[i];
 		length++;
 	}
@@ -110,11 +115,14 @@ t_list	*path_search(t_lem *lem_in, int *visited, int end)
 				room_pointers[dereference((int*)i->content)] = room;
 			visited[dereference((int*)i->content)] = 1;
 			ft_enqueue(queue, new_list(dereference((int*)i->content)));
-			free(&i->content);
+			free(i->content);
+			free(i);
 			i = i->next;
 		}
 	}
 	if (visited[end] == 1)
+	{
 		return (get_path(lem_in, room_pointers));
+	}
 	return (NULL);
 }
