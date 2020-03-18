@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path_search_help.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 13:11:56 by hopham            #+#    #+#             */
-/*   Updated: 2020/03/18 16:59:36 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/03/18 18:09:23 by HoangPham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,9 +120,9 @@ t_list	*path_search(t_lem *lem_in, int *visited, int end)
 			i = i->next;
 		}
 	}
+	free(queue);
 	if (visited[end] == 1)
-	{
 		return (get_path(lem_in, room_pointers));
-	}
+	free(room_pointers);
 	return (NULL);
 }

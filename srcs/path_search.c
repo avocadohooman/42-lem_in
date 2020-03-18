@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path_search.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:24:14 by gmolin            #+#    #+#             */
-/*   Updated: 2020/03/18 17:17:14 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/03/18 18:14:10 by HoangPham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ t_list		*get_path_list(t_lem *lem)
 	paths = create_queue();
 	while ((pa = path_search(lem, room_visited, lem->room_amount - 1)) != NULL)
 	{
-		while (1);
 		remove_visited(pa, path_visited, lem->room_amount);
 		copy_path_visited(room_visited, path_visited, lem->room_amount);
 		ft_enqueue(paths, pa);
@@ -68,5 +67,6 @@ t_list		*get_path_list(t_lem *lem)
 	paths_list = paths->first;
 	free(path_visited);
 	free(room_visited);
+	free(paths);
 	return (paths_list);
 }
