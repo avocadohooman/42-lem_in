@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:29 by hopham            #+#    #+#             */
-/*   Updated: 2020/03/19 13:16:35 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/03/19 13:22:28 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,9 @@ t_list			*get_path_list(t_lem *lem);
 
 t_list			*path_search(t_lem *lem_in, int *visited, int end);
 
+/*
+** ------ path_search_help2.c ------
+*/
 
 void        	*freeing(t_list	*i);
 
