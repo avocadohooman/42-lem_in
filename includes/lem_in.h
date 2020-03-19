@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
+/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:29 by hopham            #+#    #+#             */
-/*   Updated: 2020/03/18 18:18:17 by HoangPham        ###   ########.fr       */
+/*   Updated: 2020/03/19 13:16:35 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ typedef struct 	s_lem
 	char	*end;
 	char	*name;
 	int		room_amount;
+	int		*room_p;
+	int		room;
 	int		c_end;
 	int		c_start;
 	int		steps;
@@ -128,6 +130,9 @@ t_list			*get_path_list(t_lem *lem);
 */
 
 t_list			*path_search(t_lem *lem_in, int *visited, int end);
+
+
+void        	*freeing(t_list	*i);
 
 /*
 ** ------ assign_ants_to_paths.c ------

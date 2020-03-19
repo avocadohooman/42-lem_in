@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/15 15:40:13 by gmolin            #+#    #+#             */
-/*   Updated: 2020/03/18 16:47:23 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/03/19 13:20:48 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,29 +51,29 @@ static void     move_ants(t_list **ant_list, t_lem *lem_in, int *can_continue)
 static int     add_ants(t_list *path_stack, t_list **ant_list, int nb_ants, int *ants_left)
 {
     t_list	*i;
-	t_ants	*ta;
-	t_list	*tal;
-	int		tr;
+	t_ants	*ant;
+	t_list	*ant_l;
+	int		k;
 
 	if (*ants_left < 1)
 		return (0);
 	i = path_stack;
-	tr = 0;
+	k = 0;
 	while (i && i->content_size > 0 && *ants_left > 0)
 	{
-		ta = (t_ants *)malloc(sizeof(t_ants));
-		ta->links = (t_list *)i->content;
-		ta->amount = (nb_ants - *ants_left) + 1;
-		tal = (t_list *)malloc(sizeof(t_list));
-		tal->content = ta;
-		tal->content_size = sizeof(ta);
-		ft_lstadd(ant_list, tal);
+		ant = (t_ants *)malloc(sizeof(t_ants));
+		ant->links = (t_list *)i->content;
+		ant->amount = (nb_ants - *ants_left) + 1;
+		ant_l = (t_list *)malloc(sizeof(t_list));
+		ant_l->content = ant;
+		ant_l->content_size = sizeof(ant);
+		ft_lstadd(ant_list, ant_l);
 		(*ants_left)--;
-		tr = 1;
+		k = 1;
 		i->content_size--;
 		i = i->next;
 	}
-	return (tr);
+	return (k);
 }
 
 void            print_ants(int nb_ants, t_lem *lem_in, t_ants *ants)

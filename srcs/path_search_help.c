@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path_search_help.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
+/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 13:11:56 by hopham            #+#    #+#             */
-/*   Updated: 2020/03/18 18:09:23 by HoangPham        ###   ########.fr       */
+/*   Updated: 2020/03/19 13:17:43 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,35 +94,31 @@ static t_list	*get_path(t_lem *lem, int *rooms_pointers)
 	return (get);
 }
 
-t_list	*path_search(t_lem *lem_in, int *visited, int end)
+t_list	*path_search(t_lem *lem, int *visited, int end)
 {
 	t_queue	*queue;
 	t_list	*i;
-	int		room;
-	int		*room_pointers;
 
-	room_pointers = get_room_pointers(lem_in);
+	lem->room_p = get_room_pointers(lem);
 	queue = create_queue();
 	ft_enqueue(queue, new_list(0));
 	while (queue->first != NULL)
 	{
-		room = pop_to_visit(queue);
-		visited[room] = 1;
-		i = get_connecting_rooms(room, visited, lem_in);
+		lem->room = pop_to_visit(queue);
+		visited[lem->room] = 1;
+		i = get_connecting_rooms(lem->room, visited, lem);
 		while (i)
 		{
-			if (dereference((int*)i->content) != end || room_pointers[end] == end)
-				room_pointers[dereference((int*)i->content)] = room;
+			if (dereference((int*)i->content) != end || lem->room_p[end] == end)
+				lem->room_p[dereference((int*)i->content)] = lem->room;
 			visited[dereference((int*)i->content)] = 1;
 			ft_enqueue(queue, new_list(dereference((int*)i->content)));
-			free(i->content);
-			free(i);
-			i = i->next;
+			i = freeing(i);
 		}
 	}
 	free(queue);
 	if (visited[end] == 1)
-		return (get_path(lem_in, room_pointers));
-	free(room_pointers);
+		return (get_path(lem, lem->room_p));
+	free(lem->room_p);
 	return (NULL);
 }

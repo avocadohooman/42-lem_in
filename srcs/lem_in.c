@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
+/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:04 by hopham            #+#    #+#             */
-/*   Updated: 2020/03/18 18:16:15 by HoangPham        ###   ########.fr       */
+/*   Updated: 2020/03/19 13:19:08 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,5 @@ int			main(void)
 	ft_printf("\n");
 	print_ants(ants->amount, lem_in, ants);
 	free(ants);
-	// free(lem_in);
-	while (1);
 	return (0);
 }
