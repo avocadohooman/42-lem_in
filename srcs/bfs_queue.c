@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 11:10:39 by hopham            #+#    #+#             */
-/*   Updated: 2020/03/18 15:49:10 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/03/28 15:10:27 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_queue			*create_queue(void)
 {
 	t_queue	*queue;
 
-	if (!(queue= (t_queue*)ft_memalloc(sizeof(t_queue))))
+	if (!(queue = (t_queue*)ft_memalloc(sizeof(t_queue))))
 		ft_error("ERROR: allocate memory queue");
 	queue->first = NULL;
 	return (queue);
@@ -49,16 +49,15 @@ void			ft_enqueue(t_queue *queue, t_list *new)
 {
 	t_list	*tmp;
 
-    new->next = NULL;
+	new->next = NULL;
 	tmp = NULL;
 	if (!queue->first)
-        queue->first = new;
-    else
+		queue->first = new;
+	else
 	{
 		tmp = queue->first;
 		while (tmp->next)
-        	tmp = tmp->next;
-    	tmp->next = new;
+			tmp = tmp->next;
+		tmp->next = new;
 	}
 }
-

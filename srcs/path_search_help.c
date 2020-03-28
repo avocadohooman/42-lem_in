@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 13:11:56 by hopham            #+#    #+#             */
-/*   Updated: 2020/03/19 13:21:52 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/03/28 15:21:03 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static t_list	*get_connecting_rooms(int visiting, int *visited, t_lem *lem)
 	t_list	*node_list;
 	int		i;
 	int		end;
-	t_list 	*tmp;
+	t_list	*tmp;
 
 	end = lem->room_amount - 1;
 	if (visiting == end)
@@ -80,7 +80,7 @@ static t_list	*get_path(t_lem *lem, int *rooms_pointers)
 	length = 0;
 	while (rooms_pointers[i] != i)
 	{
-   		ft_lstadd(&path, new_list(i));
+		ft_lstadd(&path, new_list(i));
 		i = rooms_pointers[i];
 		length++;
 	}
@@ -94,7 +94,7 @@ static t_list	*get_path(t_lem *lem, int *rooms_pointers)
 	return (get);
 }
 
-t_list	*path_search(t_lem *lem, int *visited, int end)
+t_list			*path_search(t_lem *lem, int *visited, int end)
 {
 	t_queue	*queue;
 	t_list	*i;

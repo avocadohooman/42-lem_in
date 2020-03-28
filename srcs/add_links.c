@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   add_links.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
+/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 10:11:05 by gmolin            #+#    #+#             */
-/*   Updated: 2020/03/17 15:00:59 by HoangPham        ###   ########.fr       */
+/*   Updated: 2020/03/28 15:14:45 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-static void	validate_link(t_lem *rooms, char *name)
+static void		validate_link(t_lem *rooms, char *name)
 {
 	t_list	*room_name;
 

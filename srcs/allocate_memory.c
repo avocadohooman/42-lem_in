@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   allocate_memory.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
+/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 14:52:10 by hopham            #+#    #+#             */
-/*   Updated: 2020/03/17 13:50:41 by HoangPham        ###   ########.fr       */
+/*   Updated: 2020/03/28 15:12:02 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,21 @@ void	room_malloc(t_lem *lem_in)
 	}
 }
 
-void    links_malloc(t_lem *lem_in)
+void	links_malloc(t_lem *lem_in)
 {
-    int i;
+	int i;
 
-    if (!(lem_in->links = (int**)ft_memalloc(sizeof(int*) * lem_in->room_amount)))
-        ft_error("ERROR: malloc problem links int");
-    i = 0;
-    while (i < lem_in->room_amount)
-    {
-        if (!(lem_in->links[i] = (int*)ft_memalloc(sizeof(int)
+	if (!(lem_in->links = (int**)ft_memalloc(sizeof(int*)
+		* lem_in->room_amount)))
+		ft_error("ERROR: malloc problem links int");
+	i = 0;
+	while (i < lem_in->room_amount)
+	{
+		if (!(lem_in->links[i] = (int*)ft_memalloc(sizeof(int)
 								* lem_in->room_amount)))
-            ft_error("ERROR: malloc problem links int");
-        i++;
-    }
+			ft_error("ERROR: malloc problem links int");
+		i++;
+	}
 }
 
 void	ft_strsplit_free(char **str)

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   add_rooms.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
+/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 14:10:08 by hopham            #+#    #+#             */
-/*   Updated: 2020/03/17 14:26:51 by HoangPham        ###   ########.fr       */
+/*   Updated: 2020/03/28 15:13:51 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-static	void	check_coordinates(char **room)
+static void		check_coordinates(char **room)
 {
 	int i;
 	int k;
@@ -31,10 +31,10 @@ static	void	check_coordinates(char **room)
 	}
 }
 
-static	void	validate(t_lem *lem_in)
+static void		validate(t_lem *lem_in)
 {
-	int i;
-	t_list *tmp;
+	int		i;
+	t_list	*tmp;
 
 	tmp = lem_in->name_list;
 	i = 0;

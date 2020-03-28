@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:04 by hopham            #+#    #+#             */
-/*   Updated: 2020/03/19 13:19:08 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/03/28 15:21:28 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ static int	get_ants(void)
 	ft_strdel(&line);
 	ft_printf("%d\n", ant_numbers);
 	if (ant_numbers <= 0 || ant_numbers > INT_MAX)
-		ft_error("ERROR: ant_numbers is not valid"); 
+		ft_error("ERROR: ant_numbers is not valid");
 	return (ant_numbers);
 }
 
 int			main(void)
 {
-	t_ants 	*ants;
-	t_lem 	*lem_in;
+	t_ants	*ants;
+	t_lem	*lem_in;
 
 	if (!(ants = (t_ants*)ft_memalloc(sizeof(t_ants))))
 		return (0);

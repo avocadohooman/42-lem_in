@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_scan.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
+/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 11:27:13 by hopham            #+#    #+#             */
-/*   Updated: 2020/03/17 13:21:39 by HoangPham        ###   ########.fr       */
+/*   Updated: 2020/03/28 15:12:34 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ static void		scanning_links(char **line, t_lem *room)
 
 static void		scanning_rooms(char **line, t_lem *room)
 {
-	(ft_strstr(*line, "##end") || ft_strstr(*line, "##start")) ? ft_printf("%s\n", *line) : 0;
+	(ft_strstr(*line, "##end") || ft_strstr(*line, "##start"))
+	? ft_printf("%s\n", *line) : 0;
 	if (ft_strcmp("##start", *line) == 0)
 	{
 		room->c_start++;
@@ -56,7 +57,7 @@ int				input_scan(t_lem *room)
 		else if (ft_strstr(line, "-"))
 			scanning_links(&line, room);
 	}
-	if (room->c_start!= 1 || room->c_end != 1)
+	if (room->c_start != 1 || room->c_end != 1)
 		ft_error("ERROR: No start or end room.");
 	return (0);
 }

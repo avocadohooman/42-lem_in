@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   assign_ants_to_paths.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
+/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 12:07:48 by hopham            #+#    #+#             */
-/*   Updated: 2020/03/17 11:48:21 by HoangPham        ###   ########.fr       */
+/*   Updated: 2020/03/28 15:14:20 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ void	find_ants_nb_in_path(t_list *paths, int ants)
 			p = (t_list*)i->content;
 			ants--;
 			p->content_size++;
-			if (i->next && i->next->content_size >= i->content_size + p->content_size)
-				break;
+			if (i->next && i->next->content_size >= i->content_size +
+				p->content_size)
+				break ;
 			i = i->next;
 		}
 	}

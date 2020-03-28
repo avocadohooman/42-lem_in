@@ -6,22 +6,20 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:29 by hopham            #+#    #+#             */
-/*   Updated: 2020/03/19 13:22:28 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/03/28 15:23:23 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEM_IN_H
 # define LEM_IN_H
 
-
 /*
 ** ------ HEADERS ------
 */
 
-#include "ft_printf.h"
-#include "get_next_line.h"
-#include <stdio.h>
-
+# include "ft_printf.h"
+# include "get_next_line.h"
+# include <stdio.h>
 
 /*
 ** ------ STRUCTS ------
@@ -39,15 +37,15 @@ typedef struct	s_queue
 {
 	int		pop;
 	t_list	*first;
-}				t_queue;	
+}				t_queue;
 
-typedef struct 	s_room
+typedef struct	s_room
 {
 	char			*name;
 	int				pos;
 }				t_room;
 
-typedef struct 	s_lem
+typedef struct	s_lem
 {
 	int		**links;
 	char	*start;
@@ -64,7 +62,7 @@ typedef struct 	s_lem
 	t_link	*link_list;
 }				t_lem;
 
-typedef struct 	s_ants
+typedef	struct	s_ants
 {
 	int		amount;
 	t_list	*links;
@@ -135,14 +133,13 @@ t_list			*path_search(t_lem *lem_in, int *visited, int end);
 ** ------ path_search_help2.c ------
 */
 
-void        	*freeing(t_list	*i);
+void			*freeing(t_list	*i);
 
 /*
 ** ------ assign_ants_to_paths.c ------
 */
 
 void			find_ants_nb_in_path(t_list *paths, int ants);
-
 
 /*
 ** ------ print_ants.c ------

@@ -6,16 +6,16 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/19 11:49:27 by gmolin            #+#    #+#             */
-/*   Updated: 2020/03/19 13:21:50 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/03/28 15:08:45 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void        *freeing(t_list	*i)
+void	*freeing(t_list *i)
 {
-    free(i->content);
+	free(i->content);
 	free(i);
 	i = i->next;
-    return (i);
+	return (i);
 }
