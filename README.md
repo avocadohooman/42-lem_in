@@ -1,7 +1,7 @@
 # 42-lem_in
 In this project we had to solve following problem:
 Your ant colony must move from one point to another. How do you do it in the shortest time possible? 
-This project got usacquainted with graph traversal algorithms as our program has to intelligently select paths and precise movements used by the ants.
+This project got us acquainted with graph traversal algorithms as our program has to intelligently select paths and precise movements used by the ants.
 
 This project was done with my wonderful team mate [Hoang Pham](https://github.com/shilena91).
 
