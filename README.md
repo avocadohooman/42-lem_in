@@ -14,9 +14,7 @@ e.g.:
 ```
 
 # Notes by the Creator
-Although our algorithm is effiecient and fast enough to pass the reuired criteria posed by the subject, it is not perfect.
-We are reading and printing the file line by line, which is not the fastest approach. We could increase the speed by storing first everything 
-in a buffer and then flushing it.
-Also, our algorithm does not perfectly distribute and ants and use the paths in the most efficient way. However, we feel like we
-learnt the essential of graph traversal algorithms and are happy with the resulst. 
+Although our algorithm is efficient and fast enough to pass the reuqired criteria posed by the subject, it is not perfect yet.
+We are reading and printing the file line by line, which is not the fastest approach. We could increase the speed by storing first everything in a buffer and then flushing it.
+Also, our algorithm does not perfectly distribute the ants and uses the paths in the most efficient way. However, we feel like we learnt the essentials of graph traversal algorithms and we are happy with the result. 
 
