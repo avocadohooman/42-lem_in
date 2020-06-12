@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_arrays.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 13:34:51 by hopham            #+#    #+#             */
-/*   Updated: 2020/06/12 17:30:35 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/06/12 19:03:56 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,6 @@ static void		check_connection(t_lem *lem_in, int j)
 void			add_links_to_arrays(t_lem *lem_in)
 {
 	int		j;
-	int		i;
-	bool	k;
 	t_link	*tmp;
 
 	links_malloc(lem_in);
@@ -82,9 +80,4 @@ void			add_links_to_arrays(t_lem *lem_in)
 		lem_in->link_list = tmp;
 		j++;
 	}
-	i = -1;
-	k = false;
-	while (++i < lem_in->room_amount)
-		(lem_in->links[j - 1][i] == 1) ? k = true : 0;
-	(k != true) ? ft_error("ERROR: No possible solution") : 0;
 }

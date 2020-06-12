@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path_search.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:24:14 by gmolin            #+#    #+#             */
-/*   Updated: 2020/06/12 16:35:52 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/06/12 19:01:08 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ t_list		*get_path_list(t_lem *lem)
 		copy_path_visited(room_visited, path_visited, lem->room_amount);
 		ft_enqueue(paths, pa);
 	}
+	if (paths->first == NULL)
+		ft_error("ERROR: no possible solution!");
 	paths_list = paths->first;
 	free(path_visited);
 	free(room_visited);
