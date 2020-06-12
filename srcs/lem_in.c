@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:04 by hopham            #+#    #+#             */
-/*   Updated: 2020/06/12 16:38:46 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/06/12 18:35:38 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static int	get_ants(void)
 		get_next_line(0, &line);
 		if (!ft_strstr(line, "#"))
 			break ;
+		ft_printf("%s\n", line);
 		ft_strdel(&line);
 	}
 	while (i < ft_strlen(line))

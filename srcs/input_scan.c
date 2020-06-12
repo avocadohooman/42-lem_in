@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 11:27:13 by hopham            #+#    #+#             */
-/*   Updated: 2020/06/12 17:28:58 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/06/12 18:00:26 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static void		scanning_rooms(char **line, t_lem *room)
 	}
 	else if (*line[0] == '#' && *line[1] != '#')
 	{
+		ft_printf("%s\n", *line);
 		ft_strdel(line);
 		return ;
 	}
