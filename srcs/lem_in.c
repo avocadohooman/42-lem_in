@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:04 by hopham            #+#    #+#             */
-/*   Updated: 2020/06/12 18:35:38 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/06/17 17:19:41 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,18 @@ static int	get_ants(void)
 	size_t		i;
 
 	i = 0;
-	while (1)
+	while (get_next_line(0, &line))
 	{
-		get_next_line(0, &line);
-		if (!ft_strstr(line, "#"))
+		if (!ft_strstr(line, "#") && ft_strlen(line) > 0)
 			break ;
-		ft_printf("%s\n", line);
+		else if (!ft_strlen(line))
+			continue ;
+		(ft_strlen(line) > 0) ? ft_printf("%s\n", line) : 0;
 		ft_strdel(&line);
 	}
 	while (i < ft_strlen(line))
 	{
-		if (!ft_isdigit(line[i]))
-			ft_error("ERROR: invalid input");
+		(!ft_isdigit(line[i])) ? ft_error("ERROR: invalid input") : 0;
 		i++;
 	}
 	ant_numbers = ft_atoi(line);
