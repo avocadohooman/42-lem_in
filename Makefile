@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+         #
+#    By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/17 11:13:09 by hopham            #+#    #+#              #
-#    Updated: 2020/03/19 12:42:02 by gmolin           ###   ########.fr        #
+#    Updated: 2020/06/25 11:19:28 by HoangPham        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,15 +14,15 @@ NAME = lem-in
 
 LIB = ./libft/libft.a
 LIB_FOLDER = ./libft/
-FLAGS = -Wextra -Werror -Wall -g
+FLAGS =  -g
 
 SRCS = ./srcs/
-FUNC = lem_in.c input_scan.c error.c initiate_structs.c add_rooms.c add_links.c \
-		create_arrays.c allocate_memory.c bfs_queue.c delete.c \
-		path_search.c path_search_help.c path_search_help2.c assign_ants_to_paths.c print_ants.c
+ALGO_FUNC = algorithm/*.c
+GET_INPUT_FUNC = get_input/*.c
+FUNC = $(ALGO_FUNC) $(GET_INPUT_FUNC) lem_in.c error.c
 
 FILES_C = $(addprefix $(SRCS), $(FUNC))
-OBJ = $(FUNC:.c=.o)
+OBJ = *.o
 
 INCLUDES = -I ./libft/ft_printf/includes/ -I ./libft/libft/includes/ -I ./includes/
 

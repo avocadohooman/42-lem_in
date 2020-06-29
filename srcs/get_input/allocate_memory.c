@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   allocate_memory.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 14:52:10 by hopham            #+#    #+#             */
-/*   Updated: 2020/03/28 15:12:02 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/06/25 13:44:31 by HoangPham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	room_malloc(t_lem *lem_in)
 {
 	int	i;
+	int	j;
 
 	lem_in->room_amount = ft_lstcount(lem_in->name_list);
 	if (!(lem_in->rooms = (t_room**)ft_memalloc(sizeof(**lem_in->rooms)
@@ -23,8 +24,16 @@ void	room_malloc(t_lem *lem_in)
 	i = 0;
 	while (i < lem_in->room_amount)
 	{
+		j = 0;
 		if (!(lem_in->rooms[i] = (t_room*)ft_memalloc(sizeof(t_room))))
 			ft_error("ERROR: malloc problem");
+		lem_in->rooms[i]->links_nb = 0;
+		while (j < lem_in->room_amount)
+		{
+			if (!(lem_in->rooms[i]->links = ft_memalloc(sizeof(int) * lem_in->room_amount)))
+				ft_error("ERROR: malloc problem");
+			j++;
+		}
 		i++;
 	}
 }

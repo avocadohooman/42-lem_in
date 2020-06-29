@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_arrays.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 13:34:51 by hopham            #+#    #+#             */
-/*   Updated: 2020/06/12 19:03:56 by hopham           ###   ########.fr       */
+/*   Updated: 2020/06/25 15:12:43 by HoangPham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,13 @@ void			add_room_to_array(t_lem *lem)
 		if (!ft_strcmp((char*)name_list->content, lem->start))
 		{
 			lem->rooms[0]->name = lem->start;
+			lem->start_pos = 0;
 		}
 		else if (!ft_strcmp((char*)name_list->content, lem->end))
 		{
 			lem->rooms[lem->room_amount - 1]->name = lem->end;
 			lem->rooms[lem->room_amount - 1]->pos = lem->room_amount - 1;
+			lem->end_pos = lem->room_amount - 1;
 		}
 		else
 		{
@@ -40,25 +42,45 @@ void			add_room_to_array(t_lem *lem)
 		}
 		name_list = name_list->next;
 	}
+	for (i = 0; i < lem->room_amount; i++)
+	{
+		ft_printf("room name: %s, pos: %i\n", lem->rooms[i]->name, lem->rooms[i]->pos);
+	}
+	ft_printf("%i %i\n", lem->c_start, lem->c_end);
+}
+
+static void		mark_connection(t_lem *lem_in, int i, int j, int *a)
+{
+	if (lem_in->links[j][lem_in->rooms[i]->pos] != 1)
+		{
+			lem_in->links[j][lem_in->rooms[i]->pos] = 1;
+			lem_in->rooms[j]->links_nb++;
+			lem_in->rooms[j]->links[*a] = lem_in->rooms[i]->pos;
+			(*a)++;
+		}
 }
 
 static void		check_connection(t_lem *lem_in, int j)
 {
 	int i;
+	int	a;
 
 	i = 0;
+	a = 0;
 	if (!ft_strcmp(lem_in->link_list->from, lem_in->rooms[j]->name))
 	{
 		while (ft_strcmp(lem_in->link_list->to, lem_in->rooms[i]->name))
 			i++;
-		lem_in->links[j][lem_in->rooms[i]->pos] = 1;
+		mark_connection(lem_in, i, j, &a);
+		
 	}
 	i = 0;
+	a = 0;
 	if (!ft_strcmp(lem_in->link_list->to, lem_in->rooms[j]->name))
 	{
 		while (ft_strcmp(lem_in->link_list->from, lem_in->rooms[i]->name))
 			i++;
-		lem_in->links[j][lem_in->rooms[i]->pos] = 1;
+		mark_connection(lem_in, i, j, &a);
 	}
 }
 

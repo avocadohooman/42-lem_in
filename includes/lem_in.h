@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:29 by hopham            #+#    #+#             */
-/*   Updated: 2020/03/28 15:23:23 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/06/28 18:32:35 by HoangPham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,31 @@ typedef struct	s_link
 	struct s_link	*next;
 }				t_link;
 
+typedef struct s_path
+{
+	int				*path;
+	int				len;
+	int				max;
+	struct s_path	*next;
+}				t_path;
+
 typedef struct	s_queue
 {
 	int		pop;
+	int		len;
+	int		*queue;
+	int		*visited;
+	int		*pre_room;
+	int		**flow;
+	int		position;
 	t_list	*first;
 }				t_queue;
 
 typedef struct	s_room
 {
 	char			*name;
+	int				links_nb;
+	int				*links;
 	int				pos;
 }				t_room;
 
@@ -54,6 +70,8 @@ typedef struct	s_lem
 	int		room_amount;
 	int		*room_p;
 	int		room;
+	int		start_pos;
+	int		end_pos;
 	int		c_end;
 	int		c_start;
 	int		steps;
@@ -106,6 +124,36 @@ void			room_malloc(t_lem *lem_in);
 void			links_malloc(t_lem *lem_in);
 void			add_room_to_array(t_lem *lem_in);
 void			add_links_to_arrays(t_lem *lem_in);
+
+/*
+** ------ queue_functions.c ------
+*/
+
+void			initiate_queue(t_lem *lem_in, t_queue *q);
+void			clear_queue(t_queue *q);
+void			reset_queue(t_queue *q, int start, int end);
+void			set_to_n(int *set, int length, int n);
+
+/*
+** ------ path_functions.c ------
+*/
+
+t_path			*ft_new_path(int *path, int len);
+void			ft_add_path(t_path **path, t_path *new);
+
+
+/*
+** ------ bfs.c ------
+*/
+
+int				bfs(t_lem *lem_in, t_queue *q);
+
+/*
+** ------ save_path.c ------
+*/
+
+void			save_path(t_lem *lem_in, t_queue *q, t_path **path_list);
+
 
 /*
 ** ------ bfs_queue.c ------
