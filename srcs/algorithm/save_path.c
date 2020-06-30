@@ -6,7 +6,7 @@
 /*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 16:01:04 by HoangPham         #+#    #+#             */
-/*   Updated: 2020/06/28 18:14:16 by HoangPham        ###   ########.fr       */
+/*   Updated: 2020/06/30 19:41:11 by HoangPham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int  *rev_path(t_lem *lem_in, t_queue *q, int steps)
     int pos;
 
     i = 0;
-    pos = lem_in->start_pos;
+    pos = lem_in->end_pos;
     if (!(rev_path = ft_memalloc((sizeof(int) * (steps + 1)))))
         ft_error("Error memalloc rev_path");
     rev_path[steps] = pos;

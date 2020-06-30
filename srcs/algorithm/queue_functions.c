@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   queue_functions.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 11:03:01 by HoangPham         #+#    #+#             */
-/*   Updated: 2020/06/30 16:00:21 by hopham           ###   ########.fr       */
+/*   Updated: 2020/06/30 17:48:29 by HoangPham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,23 +36,30 @@ void    reset_queue(t_queue *q, int start, int end)
 void    initiate_queue(t_lem *lem_in, t_queue *q)
 {
     int     i;
+    int     j;
     
     q->len = lem_in->room_amount;
-    if (!(q->queue = ft_memalloc(sizeof(int) * q->len)))
+    if (!(q->queue = (int*)ft_memalloc(sizeof(int) * q->len)))
         ft_error("error memalloc q->queue");
-    if (!(q->pre_room = ft_memalloc(sizeof(int) * q->len)))
+    if (!(q->pre_room = (int*)ft_memalloc(sizeof(int) * q->len)))
         ft_error("error memalloc q->prev");
-    if (!(q->visited = ft_memalloc(sizeof(int) * q->len)))
+    if (!(q->visited = (int*)ft_memalloc(sizeof(int) * q->len)))
         ft_error("error memalloc q->visited");
-    if (!(q->flow = ft_memalloc(sizeof(int) * q->len)))
+    if (!(q->flow = (int**)ft_memalloc(sizeof(int*) * q->len)))
         ft_error("error memalloc q->flow");
 	i = 0;
     while (i < q->len)
     {
-        if (!(q->flow[i] = ft_memalloc(sizeof(int) * q->len)))
+        j = 0;
+        if (!(q->flow[i] = (int*)ft_memalloc(sizeof(int) * q->len)))
             ft_error("error memalloc q->flow[i]");
+        while (j < q->len)
+        {
+            q->flow[i][j] = 0;
+            j++;
+        }
         i++;
-    } 
+    }
     set_to_n(q->queue, q->len, -1);
     set_to_n(q->pre_room, q->len, -1);
     reset_queue(q, 0, -1);

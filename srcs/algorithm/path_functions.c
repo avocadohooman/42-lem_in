@@ -6,7 +6,7 @@
 /*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 10:40:50 by HoangPham         #+#    #+#             */
-/*   Updated: 2020/06/28 18:14:35 by HoangPham        ###   ########.fr       */
+/*   Updated: 2020/06/30 19:36:44 by HoangPham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,14 @@ void    ft_add_path(t_path **path, t_path *new)
 {
     t_path *tmp;
 
-    tmp = *path;
-    if ((!path) || (!new))
+    if (!new)
         return ;
+    else if ((*path)->path == NULL)
+    {
+        (*path) = new;
+        return ;
+    }
+    tmp = *path;
     while (tmp->next != NULL)
         tmp = tmp->next;
     tmp->next = new;

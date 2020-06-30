@@ -6,7 +6,7 @@
 /*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 13:34:51 by hopham            #+#    #+#             */
-/*   Updated: 2020/06/25 15:12:43 by HoangPham        ###   ########.fr       */
+/*   Updated: 2020/06/30 18:10:11 by HoangPham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void			add_room_to_array(t_lem *lem)
 	{
 		ft_printf("room name: %s, pos: %i\n", lem->rooms[i]->name, lem->rooms[i]->pos);
 	}
-	ft_printf("%i %i\n", lem->c_start, lem->c_end);
 }
 
 static void		mark_connection(t_lem *lem_in, int i, int j, int *a)
@@ -60,33 +59,30 @@ static void		mark_connection(t_lem *lem_in, int i, int j, int *a)
 		}
 }
 
-static void		check_connection(t_lem *lem_in, int j)
+static void		check_connection(t_lem *lem_in, int j, int *a)
 {
 	int i;
-	int	a;
 
 	i = 0;
-	a = 0;
 	if (!ft_strcmp(lem_in->link_list->from, lem_in->rooms[j]->name))
 	{
 		while (ft_strcmp(lem_in->link_list->to, lem_in->rooms[i]->name))
 			i++;
-		mark_connection(lem_in, i, j, &a);
-		
+		mark_connection(lem_in, i, j, a);		
 	}
 	i = 0;
-	a = 0;
 	if (!ft_strcmp(lem_in->link_list->to, lem_in->rooms[j]->name))
 	{
 		while (ft_strcmp(lem_in->link_list->from, lem_in->rooms[i]->name))
 			i++;
-		mark_connection(lem_in, i, j, &a);
+		mark_connection(lem_in, i, j, a);
 	}
 }
 
 void			add_links_to_arrays(t_lem *lem_in)
 {
 	int		j;
+	int		a;
 	t_link	*tmp;
 
 	links_malloc(lem_in);
@@ -94,9 +90,10 @@ void			add_links_to_arrays(t_lem *lem_in)
 	tmp = lem_in->link_list;
 	while (j < lem_in->room_amount)
 	{
+		a = 0;
 		while (lem_in->link_list)
 		{
-			check_connection(lem_in, j);
+			check_connection(lem_in, j, &a);
 			lem_in->link_list = lem_in->link_list->next;
 		}
 		lem_in->link_list = tmp;

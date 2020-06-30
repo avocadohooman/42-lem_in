@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   edmonds_karp.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 10:37:20 by HoangPham         #+#    #+#             */
-/*   Updated: 2020/06/30 15:49:25 by hopham           ###   ########.fr       */
+/*   Updated: 2020/06/30 19:45:24 by HoangPham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,6 @@ static int  flow_travel(t_lem *lem_in, t_queue *q)
         find_flow(q, lem_in->rooms[node], prev_flow);
         i++;
     }
-	ft_printf("%i", q->queue[i]);
     if (q->visited[lem_in->end_pos] != 1)
         return (0);
     return (1);
@@ -134,13 +133,25 @@ int         edmonds_karp(t_lem *lem_in, t_queue *q, t_path **p)
         save_path(lem_in, q, &new_path);
 		if (new_path->max == 0)
 			return (-1);
+        //print debug
+        ft_printf("\nmax: %i\n", new_path->max);
+        while (new_path)
+		{
+			for (int i = 0; i < 4; i++)
+			{
+				ft_printf("%i", new_path->path[i]);
+				ft_printf("-");
+			}
+			new_path = new_path->next;
+		}
+        //
 		*p = new_path;
 		clear_queue(q);
-		ft_printf("len: %i\n", (*p)->len);
+        //print debug
 		// while (*p)
 		// {
 		// 	ft_printf("path found: \n");
-		// 	for (int i = 0; i < (*p)->len; i++)
+		// 	for (int i = 0; i < 4; i++)
 		// 	{
 		// 		ft_printf("%i", (*p)->path[i]);
 		// 		ft_printf("-");

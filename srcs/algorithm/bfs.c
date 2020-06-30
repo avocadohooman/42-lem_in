@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bfs.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 16:23:33 by HoangPham         #+#    #+#             */
-/*   Updated: 2020/06/30 15:01:21 by hopham           ###   ########.fr       */
+/*   Updated: 2020/06/30 18:36:51 by HoangPham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int         bfs(t_lem *lem_in, t_queue *q)
     {
         node = q->queue[i];
         find_neighbors(q, lem_in->rooms[node]);
+        i++;
     }
     if (q->visited[lem_in->end_pos] != 1)
         return (0);
