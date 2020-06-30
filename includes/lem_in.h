@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
+/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:29 by hopham            #+#    #+#             */
-/*   Updated: 2020/06/28 18:32:35 by HoangPham        ###   ########.fr       */
+/*   Updated: 2020/06/30 15:00:02 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,19 @@ int				bfs(t_lem *lem_in, t_queue *q);
 */
 
 void			save_path(t_lem *lem_in, t_queue *q, t_path **path_list);
+
+/*
+** ------ edmonds_karp.c ------
+*/
+
+int				edmonds_karp(t_lem *lem_in, t_queue *q, t_path **p);
+
+/*
+** ------ edmonds_karp.c ------
+*/
+
+void			solve(t_lem *lem_in);
+
 
 
 /*

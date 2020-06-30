@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+         #
+#    By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/17 11:13:09 by hopham            #+#    #+#              #
-#    Updated: 2020/06/25 11:19:28 by HoangPham        ###   ########.fr        #
+#    Updated: 2020/06/30 15:34:37 by hopham           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = lem-in
 
 LIB = ./libft/libft.a
 LIB_FOLDER = ./libft/
-FLAGS =  -g
+FLAGS =  -g -Wall -Wextra
 
 SRCS = ./srcs/
 ALGO_FUNC = algorithm/*.c

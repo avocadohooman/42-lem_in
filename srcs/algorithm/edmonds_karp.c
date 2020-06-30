@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   edmonds_karp.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
+/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 10:37:20 by HoangPham         #+#    #+#             */
-/*   Updated: 2020/06/28 18:31:22 by HoangPham        ###   ########.fr       */
+/*   Updated: 2020/06/30 15:49:25 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** Check if flow is negative
 */
 
-static int  find_neg_flow(t_lem *lem_in, t_queue *q, t_room *r)
+static int  find_neg_flow(t_queue *q, t_room *r)
 {
     int i;
 
@@ -41,11 +41,11 @@ static int  find_neg_flow(t_lem *lem_in, t_queue *q, t_room *r)
 ** negative flow then take flow 0.
 */
 
-static void find_flow(t_lem *lem_in, t_queue *q, t_room *r, int prev_flow)
+static void find_flow(t_queue *q, t_room *r, int prev_flow)
 {
     int j;
 
-    if (prev_flow == 0 && find_neg_flow(lem_in, q, r))
+    if (prev_flow == 0 && find_neg_flow(q, r))
         return ;
     j = 0;
     while (j < r->links_nb)
@@ -103,7 +103,7 @@ static int  flow_travel(t_lem *lem_in, t_queue *q)
     int prev_flow;
 
     clear_queue(q);
-    reset_queue(q, lem_in->c_start, lem_in->c_end);
+    reset_queue(q, lem_in->start_pos, lem_in->end_pos);
     i = 0;
     prev_flow = 0;
     while (i < q->len && q->visited[lem_in->end_pos] != 1 && q->queue[i] >= 0)
@@ -111,9 +111,10 @@ static int  flow_travel(t_lem *lem_in, t_queue *q)
         node = q->queue[i];
         if (i > 0)
             prev_flow = q->flow[q->pre_room[node]][node];
-        find_flow(lem_in, q, lem_in->rooms[node], prev_flow);
+        find_flow(q, lem_in->rooms[node], prev_flow);
         i++;
     }
+	ft_printf("%i", q->queue[i]);
     if (q->visited[lem_in->end_pos] != 1)
         return (0);
     return (1);
@@ -130,6 +131,22 @@ int         edmonds_karp(t_lem *lem_in, t_queue *q, t_path **p)
         save_flow(lem_in, q);
         set_to_n(q->visited, q->len, 0);
         reset_queue(q, lem_in->start_pos, lem_in->end_pos);
-        
+        save_path(lem_in, q, &new_path);
+		if (new_path->max == 0)
+			return (-1);
+		*p = new_path;
+		clear_queue(q);
+		ft_printf("len: %i\n", (*p)->len);
+		// while (*p)
+		// {
+		// 	ft_printf("path found: \n");
+		// 	for (int i = 0; i < (*p)->len; i++)
+		// 	{
+		// 		ft_printf("%i", (*p)->path[i]);
+		// 		ft_printf("-");
+		// 	}
+		// 	(*p) = (*p)->next;
+		// }
     }
+	return (0);
 }

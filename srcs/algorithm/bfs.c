@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bfs.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
+/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 16:23:33 by HoangPham         #+#    #+#             */
-/*   Updated: 2020/06/25 16:36:36 by HoangPham        ###   ########.fr       */
+/*   Updated: 2020/06/30 15:01:21 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void find_neighbors(t_queue *q, t_room *r)
     j = 0;
     while(j < r->links_nb)
     {
-        if (q->visited[r->links[j]] = 0 && q->flow[r->pos][r->links[j]] == 1)
+        if (q->visited[r->links[j]] == 0 && q->flow[r->pos][r->links[j]] == 1)
         {
             q->queue[q->position] = r->links[j];
             q->position++;

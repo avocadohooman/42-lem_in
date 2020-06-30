@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   queue_functions.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
+/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 11:03:01 by HoangPham         #+#    #+#             */
-/*   Updated: 2020/06/25 15:41:40 by HoangPham        ###   ########.fr       */
+/*   Updated: 2020/06/30 16:00:21 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void    reset_queue(t_queue *q, int start, int end)
 {
     q->queue[0] = start;
     q->visited[start] = 1;
-    q->position = 0;
+    q->position = 1;
     if (end >= 0)
         q->visited[end] = 0;
 }
@@ -46,6 +46,7 @@ void    initiate_queue(t_lem *lem_in, t_queue *q)
         ft_error("error memalloc q->visited");
     if (!(q->flow = ft_memalloc(sizeof(int) * q->len)))
         ft_error("error memalloc q->flow");
+	i = 0;
     while (i < q->len)
     {
         if (!(q->flow[i] = ft_memalloc(sizeof(int) * q->len)))

@@ -24,7 +24,7 @@
 			"miDebuggerPath": "/Users/HoangPham/lldb-mi/usr/local/bin/lldb-mi",
 			"setupCommands": [
                 {
-                    "text": "settings set target.input-path test_maps/valid_3.txt"
+                    "text": "settings set target.input-path test_maps/valid_4.txt"
                 }
             ]
 		}

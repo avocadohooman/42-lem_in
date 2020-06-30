@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:04 by hopham            #+#    #+#             */
-/*   Updated: 2020/06/17 17:19:41 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/06/30 15:00:30 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,9 @@ int			main(void)
 	input_scan(lem_in);
 	add_room_to_array(lem_in);
 	add_links_to_arrays(lem_in);
-	ft_printf("\n");
-	print_ants(ants->amount, lem_in, ants);
-	free(ants);
+	solve(lem_in);
+	// ft_printf("\n");
+	// print_ants(ants->amount, lem_in, ants);
+	// free(ants);
 	return (0);
 }
