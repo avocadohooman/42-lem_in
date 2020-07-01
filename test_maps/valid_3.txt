@@ -1,6 +1,6 @@
 ##sdddd
 ##sdddd
-2
+5
 ##start
 1 23 3
 2 16 7

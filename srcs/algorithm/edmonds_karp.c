@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   edmonds_karp.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
+/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 10:37:20 by HoangPham         #+#    #+#             */
-/*   Updated: 2020/06/30 19:45:24 by HoangPham        ###   ########.fr       */
+/*   Updated: 2020/07/01 22:49:16 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,14 +134,16 @@ int         edmonds_karp(t_lem *lem_in, t_queue *q, t_path **p)
 		if (new_path->max == 0)
 			return (-1);
         //print debug
-        ft_printf("\nmax: %i\n", new_path->max);
+		lem_in->max_flow = new_path->max;
+		ft_printf("\nmax: %i\n", new_path->max);
         while (new_path)
 		{
-			for (int i = 0; i < 4; i++)
+			for (int i = 0; i < 20; i++)
 			{
 				ft_printf("%i", new_path->path[i]);
 				ft_printf("-");
 			}
+			ft_printf("\n");
 			new_path = new_path->next;
 		}
         //
@@ -159,5 +161,6 @@ int         edmonds_karp(t_lem *lem_in, t_queue *q, t_path **p)
 		// 	(*p) = (*p)->next;
 		// }
     }
+	ft_printf("\nmax flow: %i\n", lem_in->max_flow);
 	return (0);
 }

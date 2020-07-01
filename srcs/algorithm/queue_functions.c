@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   queue_functions.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
+/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 11:03:01 by HoangPham         #+#    #+#             */
-/*   Updated: 2020/06/30 17:48:29 by HoangPham        ###   ########.fr       */
+/*   Updated: 2020/07/01 20:14:36 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void    initiate_queue(t_lem *lem_in, t_queue *q)
 {
     int     i;
     int     j;
-    
+
     q->len = lem_in->room_amount;
     if (!(q->queue = (int*)ft_memalloc(sizeof(int) * q->len)))
         ft_error("error memalloc q->queue");

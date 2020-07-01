@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:29 by hopham            #+#    #+#             */
-/*   Updated: 2020/06/30 15:00:02 by hopham           ###   ########.fr       */
+/*   Updated: 2020/07/01 20:10:01 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ typedef struct	s_lem
 	int		c_end;
 	int		c_start;
 	int		steps;
+	int		max_flow;
 	t_room	**rooms;
 	t_list	*name_list;
 	t_link	*link_list;
