@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 13:36:37 by gmolin            #+#    #+#             */
-/*   Updated: 2020/03/16 13:18:51 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/07/03 14:31:32 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static void		initiate_rooms(t_lem *lem_in)
 	lem_in->end = NULL;
 	lem_in->c_start = 0;
 	lem_in->c_end = 0;
+	lem_in->steps = 0;
 }
 
 void			initiate_structs(t_ants *ants, t_lem *room)

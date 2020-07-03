@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_ants.c                                       :+:      :+:    :+:   */
+/*   path_set_dispatcher.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/03 15:21:55 by gmolin            #+#    #+#             */
-/*   Updated: 2020/07/03 15:59:37 by gmolin           ###   ########.fr       */
+/*   Created: 2020/07/03 13:52:56 by gmolin            #+#    #+#             */
+/*   Updated: 2020/07/03 14:44:27 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void	print_ants(t_lem *lem_in, t_ants *ants, t_path *p, int x)
+void		calc_steps_path(t_lem *lem_in, t_path *new_path)
 {
-	int		finished_ants;
-	int		move_ants;
-	int		i;
-	t_path	*path;
+	t_path	*start;
 
-	move_ants = 0;
-	finished_ants = 0;
-	while (finished_ants < ants->amount)
+	start = new_path;
+	while (new_path)
 	{
-		path = reset_ants(&x, &i, p);
-		while (++i < lem_in->max_flow)
-		{
-			move_ants_on_path(lem_in, p->path, &finished_ants, &x);
-			if (move_ants <)
-		}
+		lem_in->steps++;
+		new_path = new_path->next;
 	}
+	lem_in->steps++;
+	ft_printf("%i", lem_in->steps);
+	new_path = start;
 }

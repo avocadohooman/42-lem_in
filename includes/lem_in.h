@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:29 by hopham            #+#    #+#             */
-/*   Updated: 2020/07/01 20:10:01 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/07/03 14:41:59 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_path
 	int				*path;
 	int				len;
 	int				max;
+	int				steps;
 	struct s_path	*next;
 }				t_path;
 
@@ -159,15 +160,13 @@ void			save_path(t_lem *lem_in, t_queue *q, t_path **path_list);
 ** ------ edmonds_karp.c ------
 */
 
-int				edmonds_karp(t_lem *lem_in, t_queue *q, t_path **p);
+int				edmonds_karp(t_lem *lem_in, t_queue *q, t_path **p, t_ants *ants);
 
 /*
 ** ------ edmonds_karp.c ------
 */
 
-void			solve(t_lem *lem_in);
-
-
+void			solve(t_lem *lem_in, t_ants *ants);
 
 /*
 ** ------ bfs_queue.c ------
@@ -202,6 +201,12 @@ void			*freeing(t_list	*i);
 */
 
 void			find_ants_nb_in_path(t_list *paths, int ants);
+
+/*
+** ------ path_set_dispatcher.c ------
+*/
+
+void			calc_steps_path(t_lem *lem_in, t_path *new_path);
 
 /*
 ** ------ print_ants.c ------

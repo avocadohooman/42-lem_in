@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 10:37:20 by HoangPham         #+#    #+#             */
-/*   Updated: 2020/07/01 22:49:16 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/07/03 15:46:09 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,12 +119,14 @@ static int  flow_travel(t_lem *lem_in, t_queue *q)
     return (1);
 }
 
-int         edmonds_karp(t_lem *lem_in, t_queue *q, t_path **p)
+int         edmonds_karp(t_lem *lem_in, t_queue *q, t_path **p, t_ants *ants)
 {
-    t_path *new_path;
+    t_path	*new_path;
+	int		token;
 
     *p = ft_new_path(NULL, 0);
-    while (flow_travel(lem_in, q) == 1)
+    token = 0;
+	while (flow_travel(lem_in, q) == 1)
     {
         new_path = ft_new_path(NULL, 0);
         save_flow(lem_in, q);
@@ -133,12 +135,16 @@ int         edmonds_karp(t_lem *lem_in, t_queue *q, t_path **p)
         save_path(lem_in, q, &new_path);
 		if (new_path->max == 0)
 			return (-1);
-        //print debug
 		lem_in->max_flow = new_path->max;
 		ft_printf("\nmax: %i\n", new_path->max);
+		calc_steps_path(lem_in, new_path);
+		ft_printf("steps: %i, ants: %i\n", lem_in->steps, ants->amount);
+		if (ants->amount <= lem_in->steps && token == 0)
+			break ;
+		token++;
         while (new_path)
 		{
-			for (int i = 0; i < 20; i++)
+			for (int i = 0; i < 5; i++)
 			{
 				ft_printf("%i", new_path->path[i]);
 				ft_printf("-");
@@ -146,20 +152,8 @@ int         edmonds_karp(t_lem *lem_in, t_queue *q, t_path **p)
 			ft_printf("\n");
 			new_path = new_path->next;
 		}
-        //
 		*p = new_path;
 		clear_queue(q);
-        //print debug
-		// while (*p)
-		// {
-		// 	ft_printf("path found: \n");
-		// 	for (int i = 0; i < 4; i++)
-		// 	{
-		// 		ft_printf("%i", (*p)->path[i]);
-		// 		ft_printf("-");
-		// 	}
-		// 	(*p) = (*p)->next;
-		// }
     }
 	ft_printf("\nmax flow: %i\n", lem_in->max_flow);
 	return (0);
