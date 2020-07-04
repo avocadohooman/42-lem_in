@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 10:31:10 by HoangPham         #+#    #+#             */
-/*   Updated: 2020/07/03 15:48:33 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/07/04 16:47:37 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ void    solve(t_lem *lem_in, t_ants *ants)
         ft_error("failed allocate queue memory");
     initiate_queue(lem_in, q);
 	edmonds_karp(lem_in, q, &path_list, ants);
-	print_ants(lem_in, ants, path_list, 0)
+	lem_in->steps = 0;
+	print_ants(ants->amount, lem_in, ants);
 }
