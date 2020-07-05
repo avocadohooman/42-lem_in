@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   edmonds_karp.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 10:37:20 by HoangPham         #+#    #+#             */
-/*   Updated: 2020/07/05 19:54:54 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/07/05 20:32:10 by HoangPham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,15 +142,17 @@ int         edmonds_karp(t_lem *lem_in, t_queue *q, t_path **p, t_ants *ants)
 		if (ants->amount <= lem_in->steps && token == 0)
 			break ;
 		token++;
-        while (new_path)
+        // print debug
+        t_path *tmp = new_path;
+        while (tmp)
 		{
 			for (int i = 0; i < 5; i++)
 			{
-				ft_printf("%i", new_path->path[i]);
+				ft_printf("%i", tmp->path[i]);
 				ft_printf("-");
 			}
 			ft_printf("\n");
-			new_path = new_path->next;
+			tmp = tmp->next;
 		}
 		*p = new_path;
 		clear_queue(q);
