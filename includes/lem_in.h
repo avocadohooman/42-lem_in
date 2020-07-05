@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:29 by hopham            #+#    #+#             */
-/*   Updated: 2020/07/05 20:01:18 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/07/05 20:45:19 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -238,6 +238,7 @@ int				print_ants2(t_lem *lem_in, t_path *paths);
 t_path		*reset_ants(int *x, int *i, t_path *paths);
 int			check_print_space(int x);
 int			*get_path_lengths(t_lem *lem_in, t_path *paths, int *total);
+int			send_new_ant(t_lem *lem_in, int *p, int mov, int *fin);
 
 /*
 ** ------ weight_functions.c ------

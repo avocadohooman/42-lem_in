@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/05 16:34:24 by gmolin            #+#    #+#             */
-/*   Updated: 2020/07/05 20:07:31 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/07/05 20:48:14 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,16 +82,20 @@ int		print_ants2(t_lem *lem_in, t_path *paths)
 	while (arrived_ants < lem_in->ant_amount && (++j || 1))
 	{
 		path = reset_ants(&x, &i, paths);
-		ft_printf("path[0]\n");
-		ft_printf("path[0]%d\n", path->path);
-		while (++i < 2)
+ 		while (++i < paths->max)
 		{
 			move_ants_on_path(lem_in, path->path, &arrived_ants, &x);
-			// if (move_ants < lem_in->ant_amount && paths->)
+			if (move_ants < lem_in->ant_amount && paths->division[i] > 0)
+			{
+				x = check_print_space(x);
+				move_ants = send_new_ant(lem_in, path->path, move_ants, &arrived_ants);
+				paths->division[i]--;
+			}
 			path = path->next;
 			i++;
 		}
 		ft_printf("\n");
 	}
+	ft_printf("\nTOTAL STEPS: %d\n", j);
 	return (j);
 }

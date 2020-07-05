@@ -6,11 +6,31 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/05 17:06:26 by gmolin            #+#    #+#             */
-/*   Updated: 2020/07/05 19:30:22 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/07/05 20:45:00 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
+
+int		send_new_ant(t_lem *lem_in, int *p, int mov, int *fin)
+{
+	int		i;
+
+	i = 0;
+	if (mov <= lem_in->ant_amount && lem_in->rooms[p[1]]->empty == -1)
+	{
+		++mov;
+		lem_in->rooms[p[1]]->empty = mov;
+		if (p[1] == lem_in->end_pos)
+		{
+			lem_in->rooms[p[1]]->empty = -1;
+			++fin[0];
+		}
+		ft_printf("L%d-%s", mov, lem_in->rooms[p[1]]->name);
+		++i;
+	}
+	return (mov);
+}
 
 int		check_print_space(int x)
 {
