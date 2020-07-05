@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:04 by hopham            #+#    #+#             */
-/*   Updated: 2020/07/03 14:41:04 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/07/05 20:39:46 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int			main(void)
 		return (0);
 	initiate_structs(ants, lem_in);
 	ants->amount = get_ants();
+	lem_in->ant_amount = ants->amount;
 	input_scan(lem_in);
 	add_room_to_array(lem_in);
 	add_links_to_arrays(lem_in);
