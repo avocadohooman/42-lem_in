@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 13:34:51 by hopham            #+#    #+#             */
-/*   Updated: 2020/07/01 20:17:34 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/07/05 17:50:19 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void			add_room_to_array(t_lem *lem)
 		{
 			lem->rooms[i]->name = name_list->content;
 			lem->rooms[i]->pos = i;
+			lem->rooms[i]->empty = -1;
 			i++;
 		}
 		name_list = name_list->next;

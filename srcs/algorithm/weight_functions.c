@@ -1,40 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   assign_ants_to_paths.c                             :+:      :+:    :+:   */
+/*   weight_functions.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/05 12:07:48 by hopham            #+#    #+#             */
-/*   Updated: 2020/07/05 19:31:39 by gmolin           ###   ########.fr       */
+/*   Created: 2020/07/05 19:14:39 by gmolin            #+#    #+#             */
+/*   Updated: 2020/07/05 19:23:57 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void	find_ants_nb_in_path(t_list *paths, int ants)
+void		set_weights(t_lem *lem_in)
 {
-	t_list	*i;
-	t_list	*p;
+	int i;
 
-	while (ants > 0)
-	{
-		i = paths;
-		while (i && ants > 0)
-		{
-			p = (t_list*)i->content;
-			ants--;
-			p->content_size++;
-			if (i->next && i->next->content_size >= i->content_size +
-				p->content_size)
-				break ;
-			i = i->next;
-		}
-	}
-	i = paths;
-	while (i)
-	{
-		i->content_size = ((t_list*)i->content)->content_size;
-		i = i->next;
-	}
+	i = -1;
+	while (++i < lem_in->room_amount)
+		lem_in->rooms[i]->weight = __INT_MAX__;
+	lem_in->rooms[0]->weight = 0;
 }

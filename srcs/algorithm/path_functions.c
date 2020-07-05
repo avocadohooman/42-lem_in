@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
+/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 10:40:50 by HoangPham         #+#    #+#             */
-/*   Updated: 2020/06/30 19:36:44 by HoangPham        ###   ########.fr       */
+/*   Updated: 2020/07/05 20:06:32 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,14 @@ t_path  *clean_path(t_path *path_list)
         ft_memdel((void*)&tmp);
     }
     return (path_list);
+}
+
+
+t_path	**set_path(t_path **path_list, int i, t_lem *lem_in)
+{
+	*path_list = clean_path(*path_list);
+	(*path_list)->max = i;
+	if (!((*path_list)->division = divide_ants(lem_in, *path_list)))
+		(*path_list)->len = -1;
+	return (path_list);
 }
