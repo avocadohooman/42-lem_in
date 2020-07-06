@@ -6,11 +6,16 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/05 17:06:26 by gmolin            #+#    #+#             */
-/*   Updated: 2020/07/05 20:45:00 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/07/06 21:55:03 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
+
+/*
+** Send a new ant on the path if the first room is empty, and we haven't
+** sent any ant yet.
+*/
 
 int		send_new_ant(t_lem *lem_in, int *p, int mov, int *fin)
 {
@@ -32,6 +37,10 @@ int		send_new_ant(t_lem *lem_in, int *p, int mov, int *fin)
 	return (mov);
 }
 
+/*
+** Just checking if we need to print a space
+*/
+
 int		check_print_space(int x)
 {
 	if (x != 0)
@@ -40,12 +49,22 @@ int		check_print_space(int x)
 	return (x);
 }
 
+/*
+** Reset ant function after each step
+*/
+
+
 t_path	*reset_ants(int *x, int *i, t_path *paths)
 {
 	x[0] = 0;
 	i[0] = -1;
 	return (paths);
 }
+
+/*
+** Here we calculate the total steps of each path and keep track
+** of the total sum of all steps of all paths
+*/
 
 int		*get_path_lengths(t_lem *lem_in, t_path *paths, int *total)
 {

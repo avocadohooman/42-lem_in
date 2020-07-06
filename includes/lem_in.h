@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:29 by hopham            #+#    #+#             */
-/*   Updated: 2020/07/05 22:06:23 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/07/06 21:17:43 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -244,6 +244,7 @@ int			send_new_ant(t_lem *lem_in, int *p, int mov, int *fin);
 ** ------ weight_functions.c ------
 */
 void		set_weights(t_lem *lem_in);
+int			check_weights(t_room *next, t_room *current, t_queue *q, t_lem *lem_in);
 
 
 /*

@@ -6,11 +6,16 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/05 19:26:11 by gmolin            #+#    #+#             */
-/*   Updated: 2020/07/05 20:01:15 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/07/06 22:06:32 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
+
+/*
+** We calculate the optimal amount of ants we send per path:
+** (total amount of steps of all paths + total number of paths) / number of paths - steps in current path.
+*/
 
 static int	*calculate_divide(int *ant_div, t_lem *lem_in, int total, int *steps)
 {
@@ -25,6 +30,10 @@ static int	*calculate_divide(int *ant_div, t_lem *lem_in, int total, int *steps)
 	}
 	return (ant_div);
 }
+
+/*
+** Here we split the remainder of the ants between all potential paths
+*/
 
 static int	*split_remainder(int *division, int remainder, t_path **paths)
 {
@@ -55,6 +64,10 @@ static int	*split_remainder(int *division, int remainder, t_path **paths)
 	return (division);
 }
 
+/*
+** If there is remainder we divide it out using the split remainder function. 
+*/
+
 static int	*check_total_ants(int *division, t_lem *lem_in, t_path **paths)
 {
 	int		i;
@@ -72,6 +85,11 @@ static int	*check_total_ants(int *division, t_lem *lem_in, t_path **paths)
 	return (division);
 }
 
+/*
+** Here we get the longest path by iterating throught the steps variable.
+** We then add the quantity of ants for this path and remove 1 for the first ant.
+*/
+
 static int	get_longest(int *division, int *steps, int max)
 {
 	int		i;
@@ -86,6 +104,10 @@ static int	get_longest(int *division, int *steps, int max)
 	}
 	return (longest);
 }
+
+/*
+** Here we calculate to optimal amount of ants to send in each path
+*/
 
 int			*divide_ants(t_lem *lem_in, t_path *path_list)
 {
