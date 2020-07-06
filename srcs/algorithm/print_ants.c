@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_ants.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/05 16:34:24 by gmolin            #+#    #+#             */
-/*   Updated: 2020/07/06 09:27:42 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/07/06 11:40:32 by HoangPham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static 	int 	find_last_ant(t_lem *lem_in, int *path)
 		j++;
 		// ft_printf("patj[j]: %d\n", path[j]);
 	}
-	while (j != 0 && lem_in->rooms[path[j]] == -1)
+	while (j != 0 && lem_in->rooms[path[j]]->empty == -1)
 		j--;
 	return (j + 1);
 }
@@ -96,7 +96,6 @@ int		print_ants(t_lem *lem_in, t_path *paths)
 				paths->division[i]--;
 			}
 			path = path->next;
-			i++;
 		}
 		ft_printf("\n");
 	}
