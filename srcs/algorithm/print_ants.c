@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/05 16:34:24 by gmolin            #+#    #+#             */
-/*   Updated: 2020/07/05 20:48:14 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/07/06 09:27:42 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,13 @@ static 	int 	find_last_ant(t_lem *lem_in, int *path)
 	int j;
 
 	j = 0;
+	// ft_printf("end pos: %d\n", lem_in->end_pos);
 	while (path[j] != lem_in->end_pos)
+	{
 		j++;
-	while (j != 0 &&  lem_in->rooms[path[j]] == -1)
+		// ft_printf("patj[j]: %d\n", path[j]);
+	}
+	while (j != 0 && lem_in->rooms[path[j]] == -1)
 		j--;
 	return (j + 1);
 }
@@ -65,7 +69,7 @@ static	void	move_ants_on_path(t_lem *lem_in, int *path, int *arrived_ants, int *
 	}
 }
 
-int		print_ants2(t_lem *lem_in, t_path *paths)
+int		print_ants(t_lem *lem_in, t_path *paths)
 {
 	int		arrived_ants;
 	int		i;

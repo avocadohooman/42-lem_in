@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 10:31:10 by HoangPham         #+#    #+#             */
-/*   Updated: 2020/07/05 20:41:52 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/07/05 22:08:28 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ void    solve(t_lem *lem_in, t_ants *ants)
     initiate_queue(lem_in, q);
 	edmonds_karp(lem_in, q, &path_list, ants);
 	lem_in->steps = 0;
-	print_ants2(lem_in, path_list);
+	print_ants(lem_in, path_list);
 }

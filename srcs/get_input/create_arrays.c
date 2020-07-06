@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 13:34:51 by hopham            #+#    #+#             */
-/*   Updated: 2020/07/05 17:50:19 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/07/06 09:26:50 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void			add_room_to_array(t_lem *lem)
 		if (!ft_strcmp((char*)name_list->content, lem->start))
 		{
 			lem->rooms[0]->name = lem->start;
+			lem->rooms[0]->empty = -1;
 			lem->start_pos = 0;
 		}
 		else if (!ft_strcmp((char*)name_list->content, lem->end))
@@ -33,6 +34,7 @@ void			add_room_to_array(t_lem *lem)
 			lem->rooms[lem->room_amount - 1]->name = lem->end;
 			lem->rooms[lem->room_amount - 1]->pos = lem->room_amount - 1;
 			lem->end_pos = lem->room_amount - 1;
+			lem->rooms[lem->room_amount - 1]->empty = -1;
 		}
 		else
 		{

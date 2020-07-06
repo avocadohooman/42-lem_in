@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:29 by hopham            #+#    #+#             */
-/*   Updated: 2020/07/05 20:45:19 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/07/05 22:06:23 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,7 +228,7 @@ void			calc_steps_path(t_lem *lem_in, t_path *new_path);
 */
 
 // void			print_ants(int nb_ants, t_lem *lem_in, t_ants *ants, t_path *path_list);
-int				print_ants2(t_lem *lem_in, t_path *paths);
+int				print_ants(t_lem *lem_in, t_path *paths);
 
 
 /*
