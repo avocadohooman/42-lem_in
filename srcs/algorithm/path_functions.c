@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 10:40:50 by HoangPham         #+#    #+#             */
-/*   Updated: 2020/07/07 13:57:36 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/07/07 15:37:44 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_path	**set_path(t_path **path_list, int i, t_lem *lem_in)
 {
 	*path_list = clean_path(*path_list);
 	(*path_list)->max = i;
-	if (!((*path_list)->division = divide_ants(lem_in, *path_list)))
+	if (!((*path_list)->division = ant_distribution(lem_in, *path_list)))
 		(*path_list)->len = -1;
 	return (path_list);
 }

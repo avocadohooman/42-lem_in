@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:29 by hopham            #+#    #+#             */
-/*   Updated: 2020/07/07 15:12:28 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/07/07 15:36:03 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,7 @@ void			set_to_n(int *set, int length, int n);
 ** ------ optimise.c ------
 */
 
-int				*divide_ants(t_lem *lem_in, t_path *path_list);
+int				*ant_distribution(t_lem *lem_in, t_path *path_list);
 
 
 /*

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   optimise_ants.c                                    :+:      :+:    :+:   */
+/*   ant_distribution.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/05 19:26:11 by gmolin            #+#    #+#             */
-/*   Updated: 2020/07/07 15:20:07 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/07/07 15:35:26 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ static int	get_longest(int *division, int *steps, int max)
 ** Here we calculate to optimal amount of ants to send in each path
 */
 
-int			*divide_ants(t_lem *lem_in, t_path *path_list)
+int			*ant_distribution(t_lem *lem_in, t_path *path_list)
 {
 	int		*division;
 	int		*steps;
