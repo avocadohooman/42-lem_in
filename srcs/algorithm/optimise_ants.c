@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   optimise_ants.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
+/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/05 19:26:11 by gmolin            #+#    #+#             */
-/*   Updated: 2020/07/07 13:43:36 by HoangPham        ###   ########.fr       */
+/*   Updated: 2020/07/07 15:20:07 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 /*
 ** We calculate the optimal amount of ants we send per path:
-** (total amount of steps of all paths + total number of paths) / number of paths - steps in current path.
+** (total amount of steps of all paths + total number of paths) / number of 
+** paths - steps in current path.
 */
 
-static int	*calculate_divide(int *ant_div, t_lem *lem_in, int total, int *steps)
+static int	*calc_divide(int *ant_div, t_lem *lem_in, int total, int *steps)
 {
 	int		i;
 
@@ -129,9 +130,7 @@ int			*divide_ants(t_lem *lem_in, t_path *path_list)
 		ft_memdel((void*)&steps);
 		return (division);
 	}
-	// if ((steps = get_path_lengths(lem_in, path_list, &total)) == NULL)
-	// 	return (NULL);
-	division = calculate_divide(division, lem_in, total, steps);
+	division = calc_divide(division, lem_in, total, steps);
 	path_list->longest = get_longest(division, steps, path_list->max);
 	division = check_total_ants(division, lem_in, &path_list);
 	path_list->longest = get_longest(division, steps, path_list->max);

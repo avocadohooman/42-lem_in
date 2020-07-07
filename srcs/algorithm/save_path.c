@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 16:01:04 by HoangPham         #+#    #+#             */
-/*   Updated: 2020/07/06 22:09:35 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/07/07 14:57:27 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ t_path        **save_path(t_lem *lem_in, t_queue *q, t_path **path_list)
     int     i;
 
     i = 0;
-	// set_weights(lem_in);
     while (bfs(lem_in, q) == 1)
     {
         steps = count_steps(q, lem_in->start_pos, lem_in->end_pos);
@@ -110,5 +109,4 @@ t_path        **save_path(t_lem *lem_in, t_queue *q, t_path **path_list)
     }
 	path_list = set_path(path_list, i, lem_in);
 	return (path_list);
-    // (*path_list)->max = i;
 }

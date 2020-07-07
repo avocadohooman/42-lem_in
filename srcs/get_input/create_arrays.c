@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 13:34:51 by hopham            #+#    #+#             */
-/*   Updated: 2020/07/06 09:26:50 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/07/07 13:58:35 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ void			add_room_to_array(t_lem *lem)
 		}
 		name_list = name_list->next;
 	}
-	for (i = 0; i < lem->room_amount; i++)
-	{
-		ft_printf("room name: %s, pos: %i\n", lem->rooms[i]->name, lem->rooms[i]->pos);
-	}
+	// for (i = 0; i < lem->room_amount; i++)
+	// {
+	// 	ft_printf("room name: %s, pos: %i\n", lem->rooms[i]->name, lem->rooms[i]->pos);
+	// }
 }
 
 static void		mark_connection(t_lem *lem_in, int i, int j, int *a)

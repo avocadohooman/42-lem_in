@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
+/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:29 by hopham            #+#    #+#             */
-/*   Updated: 2020/07/07 13:40:17 by HoangPham        ###   ########.fr       */
+/*   Updated: 2020/07/07 15:12:28 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ typedef struct	s_room
 	int				*links;
 	int				pos;
 	int				empty;
-	int				weight;
 }				t_room;
 
 typedef struct	s_lem
@@ -82,6 +81,7 @@ typedef struct	s_lem
 	int			steps;
 	int			max_flow;
 	long long	ant_amount;
+	long long	move_ants;
 	t_room	**rooms;
 	t_list	*name_list;
 	t_link	*link_list;
@@ -175,13 +175,13 @@ t_path			**save_path(t_lem *lem_in, t_queue *q, t_path **path_list);
 ** ------ edmonds_karp.c ------
 */
 
-int				edmonds_karp(t_lem *lem_in, t_queue *q, t_path **p, t_ants *ants);
+int				edmonds_karp(t_lem *lem_in, t_queue *q, t_path **p);
 
 /*
 ** ------ edmonds_karp.c ------
 */
 
-void			solve(t_lem *lem_in, t_ants *ants);
+void			solve(t_lem *lem_in);
 
 /*
 ** ------ bfs_queue.c ------

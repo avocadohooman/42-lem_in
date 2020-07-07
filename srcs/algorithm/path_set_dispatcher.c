@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 13:52:56 by gmolin            #+#    #+#             */
-/*   Updated: 2020/07/03 14:44:27 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/07/07 15:21:27 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,5 @@ void		calc_steps_path(t_lem *lem_in, t_path *new_path)
 		new_path = new_path->next;
 	}
 	lem_in->steps++;
-	ft_printf("%i", lem_in->steps);
 	new_path = start;
 }

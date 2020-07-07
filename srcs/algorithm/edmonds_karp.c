@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   edmonds_karp.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
+/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 10:37:20 by HoangPham         #+#    #+#             */
-/*   Updated: 2020/07/07 13:40:25 by HoangPham        ###   ########.fr       */
+/*   Updated: 2020/07/07 14:56:34 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,19 @@
 ** Check if flow is negative
 */
 
-static int  find_neg_flow(t_lem *lem_in, t_queue *q, t_room *r)
+static int  find_neg_flow(t_queue *q, t_room *r)
 {
     int i;
 
     i = 0;
     while (i < r->links_nb)
     {
-		// if (lem_in->rooms[r->links[i]]->weight != __INT_MAX__)
-		// 	check_weights(lem_in->rooms[r->links[i]], r, q, lem_in);
         if (q->visited[r->links[i]] != 1 && q->flow[r->pos][r->links[i]] == -1)
         {
             q->queue[q->position] = r->links[i];
             q->position++;
             q->pre_room[r->links[i]] = r->pos;
             q->visited[r->links[i]] = 1;
-			// lem_in->rooms[r->links[i]]->weight = r->weight - 1;
             return (1);
         }
         i++;
@@ -44,27 +41,21 @@ static int  find_neg_flow(t_lem *lem_in, t_queue *q, t_room *r)
 ** negative flow then take flow 0.
 */
 
-static void find_flow(t_lem *lem_in, t_queue *q, t_room *r, int prev_flow)
+static void find_flow(t_queue *q, t_room *r, int prev_flow)
 {
     int j;
 
-    if (prev_flow == 0 && find_neg_flow(lem_in, q, r))
+    if (prev_flow == 0 && find_neg_flow(q, r))
         return ;
     j = 0;
     while (j < r->links_nb)
     {
-		// if (lem_in->rooms[r->links[j]]->weight != __INT_MAX__)
-		// 	check_weights(lem_in->rooms[r->links[j]], r, q, lem_in);
         if (q->visited[r->links[j]] != 1 && q->flow[r->pos][r->links[j]] != 1)
         {
             q->queue[q->position] = r->links[j];
             q->position++;
             q->pre_room[r->links[j]] = r->pos;
             q->visited[r->links[j]] = 1;
-			// if (q->flow[r->pos][r->links[j]] == 0)
-			// 	lem_in->rooms[r->links[j]]->weight = r->weight + 1;
-			// else
-			// 	lem_in->rooms[r->links[j]]->weight = r->weight - 1;
         }
         j++;
     }
@@ -120,7 +111,7 @@ static int  flow_travel(t_lem *lem_in, t_queue *q)
         node = q->queue[i];
         if (i > 0)
             prev_flow = q->flow[q->pre_room[node]][node];
-        find_flow(lem_in, q, lem_in->rooms[node], prev_flow);
+        find_flow(q, lem_in->rooms[node], prev_flow);
         i++;
     }
     if (q->visited[lem_in->end_pos] != 1)
@@ -128,14 +119,13 @@ static int  flow_travel(t_lem *lem_in, t_queue *q)
     return (1);
 }
 
-int         edmonds_karp(t_lem *lem_in, t_queue *q, t_path **p, t_ants *ants)
+int         edmonds_karp(t_lem *lem_in, t_queue *q, t_path **p)
 {
     t_path	*new_path;
 	int		token;
 
     *p = ft_new_path(NULL, 0);
     token = 0;
-	// set_weights(lem_in);
 	while (flow_travel(lem_in, q) == 1)
     {
         new_path = ft_new_path(NULL, 0);
@@ -146,7 +136,7 @@ int         edmonds_karp(t_lem *lem_in, t_queue *q, t_path **p, t_ants *ants)
 		if (new_path->max == 0)
 			return (-1);
 		lem_in->max_flow = new_path->max;
-		ft_printf("\nmax: %i\n", new_path->max);
+		// ft_printf("\nmax: %i\n", new_path->max);
 		// calc_steps_path(lem_in, new_path);
 		// ft_printf("steps: %i, ants: %i\n", lem_in->steps, ants->amount);
 		// if (ants->amount <= lem_in->steps && token == 0)
@@ -156,17 +146,17 @@ int         edmonds_karp(t_lem *lem_in, t_queue *q, t_path **p, t_ants *ants)
         // }
 		// token++;
         // print debug
-        t_path *tmp = new_path;
-        while (tmp)
-		{
-			for (int i = 0; i < 5; i++)
-			{
-				ft_printf("%i", tmp->path[i]);
-				ft_printf("-");
-			}
-			ft_printf("\n");
-			tmp = tmp->next;
-		}
+        // t_path *tmp = new_path;
+        // while (tmp)
+		// {
+		// 	for (int i = 0; i < 5; i++)
+		// 	{
+		// 		ft_printf("%i", tmp->path[i]);
+		// 		ft_printf("-");
+		// 	}
+		// 	ft_printf("\n");
+		// 	tmp = tmp->next;
+		// }
         if ((*p)->longest == 0 || (*p)->longest > new_path->longest)
 		{
 			free_path((*p));
@@ -176,6 +166,6 @@ int         edmonds_karp(t_lem *lem_in, t_queue *q, t_path **p, t_ants *ants)
 			free_path(new_path);
 		clear_queue(q);
     }
-	ft_printf("\nmax flow: %i\n", lem_in->max_flow);
+	// ft_printf("\nmax flow: %i\n", lem_in->max_flow);
 	return (0);
 }
