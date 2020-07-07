@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:29 by hopham            #+#    #+#             */
-/*   Updated: 2020/07/06 21:17:43 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/07/07 13:40:17 by HoangPham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,7 +157,7 @@ t_path			*ft_new_path(int *path, int len);
 void			ft_add_path(t_path **path, t_path *new);
 t_path			**set_path(t_path **path_list, int i, t_lem *lem_in);
 t_path  		*clean_path(t_path *path_list);
-
+void			free_path(t_path *path_list);
 
 /*
 ** ------ bfs.c ------

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   edmonds_karp.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 10:37:20 by HoangPham         #+#    #+#             */
-/*   Updated: 2020/07/06 22:09:28 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/07/07 13:40:25 by HoangPham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,14 +147,14 @@ int         edmonds_karp(t_lem *lem_in, t_queue *q, t_path **p, t_ants *ants)
 			return (-1);
 		lem_in->max_flow = new_path->max;
 		ft_printf("\nmax: %i\n", new_path->max);
-		calc_steps_path(lem_in, new_path);
-		ft_printf("steps: %i, ants: %i\n", lem_in->steps, ants->amount);
-		if (ants->amount <= lem_in->steps && token == 0)
-        {
-            *p = new_path;
-			break ;
-        }
-		token++;
+		// calc_steps_path(lem_in, new_path);
+		// ft_printf("steps: %i, ants: %i\n", lem_in->steps, ants->amount);
+		// if (ants->amount <= lem_in->steps && token == 0)
+        // {
+        //     *p = new_path;
+		// 	break ;
+        // }
+		// token++;
         // print debug
         t_path *tmp = new_path;
         while (tmp)
@@ -167,7 +167,13 @@ int         edmonds_karp(t_lem *lem_in, t_queue *q, t_path **p, t_ants *ants)
 			ft_printf("\n");
 			tmp = tmp->next;
 		}
-		*p = new_path;
+        if ((*p)->longest == 0 || (*p)->longest > new_path->longest)
+		{
+			free_path((*p));
+			*p = new_path;
+		}
+		else
+			free_path(new_path);
 		clear_queue(q);
     }
 	ft_printf("\nmax flow: %i\n", lem_in->max_flow);

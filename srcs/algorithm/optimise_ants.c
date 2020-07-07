@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   optimise_ants.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/05 19:26:11 by gmolin            #+#    #+#             */
-/*   Updated: 2020/07/06 22:06:32 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/07/07 13:43:36 by HoangPham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,13 +118,19 @@ int			*divide_ants(t_lem *lem_in, t_path *path_list)
 	total = 0;
 	division = (int *)ft_memalloc(sizeof(int) * path_list->max);
 	lem_in->max_flow = path_list->max;
+	if ((steps = get_path_lengths(lem_in, path_list, &total)) == NULL)
+		return (NULL);
 	if (path_list->max == 1)
 	{
 		division[0] = lem_in->ant_amount;
+		path_list->longest = get_longest(division, steps, path_list->max);
+		division = check_total_ants(division, lem_in, &path_list);
+		path_list->longest = get_longest(division, steps, path_list->max);
+		ft_memdel((void*)&steps);
 		return (division);
 	}
-	if ((steps = get_path_lengths(lem_in, path_list, &total)) == NULL)
-		return (NULL);
+	// if ((steps = get_path_lengths(lem_in, path_list, &total)) == NULL)
+	// 	return (NULL);
 	division = calculate_divide(division, lem_in, total, steps);
 	path_list->longest = get_longest(division, steps, path_list->max);
 	division = check_total_ants(division, lem_in, &path_list);
