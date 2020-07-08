@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "/home/pi/lem_in"
+		},
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"git.autofetch": true,
+		"files.autoSave": "onFocusChange",
+		"editor.insertSpaces": false
+	}
+}

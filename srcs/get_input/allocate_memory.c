@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 14:52:10 by hopham            #+#    #+#             */
-/*   Updated: 2020/07/07 15:13:53 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/07/08 17:00:33 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void	room_malloc(t_lem *lem_in)
 		if (!(lem_in->rooms[i] = (t_room*)ft_memalloc(sizeof(t_room))))
 			ft_error("ERROR: malloc problem");
 		lem_in->rooms[i]->links_nb = 0;
-		if (!(lem_in->rooms[i]->links = (int*)ft_memalloc(sizeof(int) * lem_in->room_amount)))
+		if (!(lem_in->rooms[i]->links = (int*)ft_memalloc(sizeof(int)
+		* lem_in->room_amount)))
 			ft_error("ERROR: malloc problem");
 		i++;
 	}

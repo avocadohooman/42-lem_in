@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/05 19:26:11 by gmolin            #+#    #+#             */
-/*   Updated: 2020/07/07 20:15:57 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/07/08 15:42:28 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*
 ** We calculate the optimal amount of ants we send per path:
-** (total amount of steps of all paths + total number of paths) / number of 
+** (total amount of steps of all paths + total number of paths) / number ofjj
 ** paths - steps in current path.
 */
 
@@ -23,11 +23,11 @@ static int	*calc_divide(int *ant_div, t_lem *lem_in, int total, int *steps)
 	int		i;
 
 	i = 0;
-	total = (total + lem_in->ant_amount ) / lem_in->max_flow;
+	total = (total + lem_in->ant_amount) / lem_in->max_flow;
 	while (i < lem_in->max_flow)
 	{
 		ant_div[i] = total - steps[i];
-		++i;
+		i++;
 	}
 	return (ant_div);
 }
@@ -49,24 +49,24 @@ static int	*split_remainder(int *division, int remainder, t_path **paths)
 		{
 			if (division[i] + 1 <= (*paths)->longest)
 			{
-				--remainder;
-				++division[i];
+				remainder--;
+				division[i]++;
 			}
 			if (division[i] >= (*paths)->longest)
-				++full;
+				full++;
 			if (full == (*paths)->max)
 			{
 				full = 0;
-				++(*paths)->longest;
+				(*paths)->longest++;
 			}
-			++i;
+			i++;
 		}
 	}
 	return (division);
 }
 
 /*
-** If there is remainder we divide it out using the split remainder function. 
+** If there is remainder we divide it out using the split remainder function.
 */
 
 static int	*check_total_ants(int *division, t_lem *lem_in, t_path **paths)
@@ -79,7 +79,7 @@ static int	*check_total_ants(int *division, t_lem *lem_in, t_path **paths)
 	while (i < (*paths)->max)
 	{
 		total = total + division[i];
-		++i;
+		i++;
 	}
 	if (total < lem_in->ant_amount)
 		division = split_remainder(division, lem_in->ant_amount - total, paths);
@@ -88,7 +88,8 @@ static int	*check_total_ants(int *division, t_lem *lem_in, t_path **paths)
 
 /*
 ** Here we get the longest path by iterating throught the steps variable.
-** We then add the quantity of ants for this path and remove 1 for the first ant.
+** We then add the quantity of ants for this path and remove 1 for
+** the first ant.
 */
 
 static int	get_longest(int *division, int *steps, int max)
@@ -96,12 +97,13 @@ static int	get_longest(int *division, int *steps, int max)
 	int		i;
 	int		longest;
 
-	i = -1;
+	i = 0;
 	longest = 0;
-	while (++i < max)
+	while (i < max)
 	{
 		if (longest < steps[i] + division[i] - 1)
 			longest = steps[i] + division[i] - 1;
+		i++;
 	}
 	return (longest);
 }

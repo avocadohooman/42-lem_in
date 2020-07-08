@@ -6,12 +6,20 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 13:34:51 by hopham            #+#    #+#             */
-/*   Updated: 2020/07/07 13:58:35 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/07/08 17:06:02 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 #include <stdbool.h>
+
+static	void	initiate_end_room(t_lem *lem)
+{
+	lem->rooms[lem->room_amount - 1]->name = lem->end;
+	lem->rooms[lem->room_amount - 1]->pos = lem->room_amount - 1;
+	lem->end_pos = lem->room_amount - 1;
+	lem->rooms[lem->room_amount - 1]->empty = -1;
+}
 
 void			add_room_to_array(t_lem *lem)
 {
@@ -30,12 +38,7 @@ void			add_room_to_array(t_lem *lem)
 			lem->start_pos = 0;
 		}
 		else if (!ft_strcmp((char*)name_list->content, lem->end))
-		{
-			lem->rooms[lem->room_amount - 1]->name = lem->end;
-			lem->rooms[lem->room_amount - 1]->pos = lem->room_amount - 1;
-			lem->end_pos = lem->room_amount - 1;
-			lem->rooms[lem->room_amount - 1]->empty = -1;
-		}
+			initiate_end_room(lem);
 		else
 		{
 			lem->rooms[i]->name = name_list->content;
@@ -45,21 +48,17 @@ void			add_room_to_array(t_lem *lem)
 		}
 		name_list = name_list->next;
 	}
-	// for (i = 0; i < lem->room_amount; i++)
-	// {
-	// 	ft_printf("room name: %s, pos: %i\n", lem->rooms[i]->name, lem->rooms[i]->pos);
-	// }
 }
 
 static void		mark_connection(t_lem *lem_in, int i, int j, int *a)
 {
 	if (lem_in->links[j][lem_in->rooms[i]->pos] != 1)
-		{
-			lem_in->links[j][lem_in->rooms[i]->pos] = 1;
-			lem_in->rooms[j]->links_nb++;
-			lem_in->rooms[j]->links[*a] = lem_in->rooms[i]->pos;
-			(*a)++;
-		}
+	{
+		lem_in->links[j][lem_in->rooms[i]->pos] = 1;
+		lem_in->rooms[j]->links_nb++;
+		lem_in->rooms[j]->links[*a] = lem_in->rooms[i]->pos;
+		(*a)++;
+	}
 }
 
 static void		check_connection(t_lem *lem_in, int j, int *a)
@@ -71,7 +70,7 @@ static void		check_connection(t_lem *lem_in, int j, int *a)
 	{
 		while (ft_strcmp(lem_in->link_list->to, lem_in->rooms[i]->name))
 			i++;
-		mark_connection(lem_in, i, j, a);		
+		mark_connection(lem_in, i, j, a);
 	}
 	i = 0;
 	if (!ft_strcmp(lem_in->link_list->to, lem_in->rooms[j]->name))

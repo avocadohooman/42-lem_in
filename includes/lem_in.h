@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:29 by hopham            #+#    #+#             */
-/*   Updated: 2020/07/07 20:14:30 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/07/08 17:20:13 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct	s_link
 	struct s_link	*next;
 }				t_link;
 
-typedef struct s_path
+typedef struct	s_path
 {
 	int				*path;
 	int				len;
@@ -65,7 +65,7 @@ typedef struct	s_room
 	int				empty;
 }				t_room;
 
-typedef struct	s_lem
+typedef	struct	s_lem
 {
 	int			**links;
 	char		*start;
@@ -81,10 +81,11 @@ typedef struct	s_lem
 	int			steps;
 	int			max_flow;
 	long long	ant_amount;
-	long long	move_ants;
-	t_room	**rooms;
-	t_list	*name_list;
-	t_link	*link_list;
+	long long	mv_a;
+	long long	arr_a;
+	t_room		**rooms;
+	t_list		*name_list;
+	t_link		*link_list;
 }				t_lem;
 
 typedef	struct	s_ants
@@ -141,13 +142,11 @@ void			clear_queue(t_queue *q);
 void			reset_queue(t_queue *q, int start, int end);
 void			set_to_n(int *set, int length, int n);
 
-
 /*
 ** ------ optimise.c ------
 */
 
 int				*ant_distribution(t_lem *lem_in, t_path *path_list);
-
 
 /*
 ** ------ path_functions.c ------
@@ -156,7 +155,7 @@ int				*ant_distribution(t_lem *lem_in, t_path *path_list);
 t_path			*ft_new_path(int *path, int len);
 void			ft_add_path(t_path **path, t_path *new);
 t_path			**set_path(t_path **path_list, int i, t_lem *lem_in);
-t_path  		*clean_path(t_path *path_list);
+t_path			*clean_path(t_path *path_list);
 void			free_path(t_path *path_list);
 
 /*
@@ -178,7 +177,7 @@ t_path			**save_path(t_lem *lem_in, t_queue *q, t_path **path_list);
 int				edmonds_karp(t_lem *lem_in, t_queue *q, t_path **p);
 
 /*
-** ------ edmonds_karp.c ------
+** ------ solve.c ------
 */
 
 void			solve(t_lem *lem_in);
@@ -227,18 +226,16 @@ void			calc_steps_path(t_lem *lem_in, t_path *new_path);
 ** ------ print_ants.c ------
 */
 
-// void			print_ants(int nb_ants, t_lem *lem_in, t_ants *ants, t_path *path_list);
 int				print_ants(t_lem *lem_in, t_path *paths);
-
 
 /*
 ** ------ ant_functions.c ------
 */
 
-t_path		*reset_ants(int *x, int *i, t_path *paths);
-int			check_print_space(int x);
-int			*get_path_lengths(t_lem *lem_in, t_path *paths, int *total);
-int			send_new_ant(t_lem *lem_in, int *p, int mov, int *fin);
+t_path			*reset_ants(int *x, int *i, t_path *paths);
+int				check_print_space(int x);
+int				*get_path_lengths(t_lem *lem_in, t_path *paths, int *total);
+int				send_new_ant(t_lem *lem_in, int *p);
 
 /*
 ** ------ error.c ------
