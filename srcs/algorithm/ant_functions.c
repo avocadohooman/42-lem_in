@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/05 17:06:26 by gmolin            #+#    #+#             */
-/*   Updated: 2020/07/06 21:55:03 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/07/08 10:21:20 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		send_new_ant(t_lem *lem_in, int *p, int mov, int *fin)
 			++fin[0];
 		}
 		ft_printf("L%d-%s", mov, lem_in->rooms[p[1]]->name);
-		++i;
+		i++;
 	}
 	return (mov);
 }
@@ -80,7 +80,7 @@ int		*get_path_lengths(t_lem *lem_in, t_path *paths, int *total)
 	{
 		steps[i] = path->len;
 		total[0] = total[0] + steps[i];
-		++i;
+		i++;
 		path = path->next;
 	}
 	return (steps);
