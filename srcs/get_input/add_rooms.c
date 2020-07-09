@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_rooms.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 14:10:08 by hopham            #+#    #+#             */
-/*   Updated: 2020/07/07 14:56:56 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/07/09 11:32:29 by HoangPham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void		check_coordinates(char **room)
 		while (room[k][i])
 		{
 			if (!ft_isdigit(room[k][i]))
-				ft_error("invalid input");
+				ft_error("ERROR: invalid input");
 			i++;
 		}
 		k++;

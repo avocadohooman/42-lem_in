@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   edmonds_karp.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 10:37:20 by HoangPham         #+#    #+#             */
-/*   Updated: 2020/07/08 16:58:03 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/07/09 12:31:27 by HoangPham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ static	void	save_flow(t_lem *lem_in, t_queue *q)
 	int dst;
 
 	src = lem_in->end_pos;
+	if (q->pre_room[src] == lem_in->start_pos)
+		return ;
 	while (src != lem_in->start_pos)
 	{
 		dst = q->pre_room[src];
@@ -96,7 +98,7 @@ static	void	save_flow(t_lem *lem_in, t_queue *q)
 ** we have not visited end, we have not found a path and return 0.
 */
 
-static	int		flow_travel(t_lem *lem_in, t_queue *q)
+static	int		flow_travel(t_lem *lem_in, t_queue *q, int token)
 {
 	int i;
 	int node;
@@ -106,6 +108,7 @@ static	int		flow_travel(t_lem *lem_in, t_queue *q)
 	reset_queue(q, lem_in->start_pos, lem_in->end_pos);
 	i = 0;
 	prev_flow = 0;
+	check_start_end(lem_in, q);
 	while (i < q->len && q->visited[lem_in->end_pos] != 1 && q->queue[i] >= 0)
 	{
 		node = q->queue[i];
@@ -114,7 +117,8 @@ static	int		flow_travel(t_lem *lem_in, t_queue *q)
 		find_flow(q, lem_in->rooms[node], prev_flow);
 		i++;
 	}
-	if (q->visited[lem_in->end_pos] != 1)
+	if (q->pre_room[lem_in->end_pos] == -1 ||
+		(q->pre_room[lem_in->end_pos] == lem_in->start_pos && token == 1))
 		return (0);
 	return (1);
 }
@@ -126,7 +130,7 @@ int				edmonds_karp(t_lem *lem_in, t_queue *q, t_path **p)
 
 	*p = ft_new_path(NULL, 0);
 	token = 0;
-	while (flow_travel(lem_in, q) == 1)
+	while (flow_travel(lem_in, q, token) == 1 && (token = 1))
 	{
 		new_path = ft_new_path(NULL, 0);
 		save_flow(lem_in, q);
@@ -145,5 +149,7 @@ int				edmonds_karp(t_lem *lem_in, t_queue *q, t_path **p)
 			free_path(new_path);
 		clear_queue(q);
 	}
-	return (0);
+	if ((*p)->path == NULL)
+		return (0);
+	return (1);
 }

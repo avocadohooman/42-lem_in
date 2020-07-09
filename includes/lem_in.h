@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:29 by hopham            #+#    #+#             */
-/*   Updated: 2020/07/08 17:20:13 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/07/09 11:21:50 by HoangPham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,6 +162,7 @@ void			free_path(t_path *path_list);
 ** ------ bfs.c ------
 */
 
+void			check_start_end(t_lem *lem_in, t_queue *q);
 int				bfs(t_lem *lem_in, t_queue *q);
 
 /*

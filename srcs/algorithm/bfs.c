@@ -3,14 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   bfs.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 16:23:33 by HoangPham         #+#    #+#             */
-/*   Updated: 2020/07/08 15:50:35 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/07/09 12:25:03 by HoangPham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
+
+void			check_start_end(t_lem *lem_in, t_queue *q)
+{
+	int	i;
+
+	i = 0;
+	while (i != lem_in->rooms[lem_in->start_pos]->links_nb)
+	{
+		if (lem_in->rooms[lem_in->start_pos]->links[i] == lem_in->end_pos)
+		{
+			q->flow[lem_in->start_pos][lem_in->end_pos] = 1;
+			q->flow[lem_in->end_pos][lem_in->start_pos] = -1;
+			q->pre_room[lem_in->end_pos] = lem_in->start_pos;
+		}
+		i++;
+	}
+}
 
 /*
 ** This finds linked or (neighbouring) nodes and adds them to the queue
@@ -52,5 +69,8 @@ int				bfs(t_lem *lem_in, t_queue *q)
 	}
 	if (q->visited[lem_in->end_pos] != 1)
 		return (0);
+	if (q->flow[lem_in->start_pos][lem_in->end_pos] == 1
+		&& q->pre_room[lem_in->end_pos] == lem_in->start_pos)
+		q->flow[lem_in->start_pos][lem_in->end_pos] = 0;
 	return (1);
 }
