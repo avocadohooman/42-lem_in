@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solve.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: HoangPham <HoangPham@student.42.fr>        +#+  +:+       +#+        */
+/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 10:31:10 by HoangPham         #+#    #+#             */
-/*   Updated: 2020/07/09 12:00:50 by HoangPham        ###   ########.fr       */
+/*   Updated: 2020/07/10 13:03:34 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,6 @@ void	solve(t_lem *lem_in)
 	lem_in->steps = 0;
 	ft_printf("\n");
 	print_ants(lem_in, path_list);
+	free_path(path_list);
+	free_queue(q);
 }

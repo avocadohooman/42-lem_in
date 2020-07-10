@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   queue_functions.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 11:03:01 by HoangPham         #+#    #+#             */
-/*   Updated: 2020/07/08 16:52:18 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/07/10 13:03:23 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,24 @@ void	clear_queue(t_queue *q)
 {
 	set_to_n(q->pre_room, q->len, -1);
 	set_to_n(q->queue, q->len, -1);
+}
+
+void	free_queue(t_queue *q)
+{
+	int	i;
+
+	i = 0;
+	while (i < q->len)
+	{
+		ft_memdel((void*)&q->flow[i]);
+		i++;
+	}
+	if (q->flow != NULL)
+		free(q->flow);
+	if (q->pre_room != NULL)
+		free(q->pre_room);
+	if (q->queue != NULL)
+		free(q->queue);
+	if (q->visited != NULL)
+		free(q->visited);
 }

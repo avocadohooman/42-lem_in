@@ -6,7 +6,7 @@
 /*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:04 by hopham            #+#    #+#             */
-/*   Updated: 2020/07/10 12:29:07 by hopham           ###   ########.fr       */
+/*   Updated: 2020/07/10 12:58:46 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int			main(void)
 	add_room_to_array(lem_in);
 	add_links_to_arrays(lem_in);
 	solve(lem_in);
+	while (1);
 	ft_printf("\nTotal Steps: %d\n", lem_in->steps);
 	free(ants);
 	return (0);

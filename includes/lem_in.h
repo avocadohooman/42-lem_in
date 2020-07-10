@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:29 by hopham            #+#    #+#             */
-/*   Updated: 2020/07/10 12:53:16 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/07/10 13:03:00 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,7 @@ void			initiate_queue(t_lem *lem_in, t_queue *q);
 void			clear_queue(t_queue *q);
 void			reset_queue(t_queue *q, int start, int end);
 void			set_to_n(int *set, int length, int n);
+void			free_queue(t_queue *q);
 
 /*
 ** ------ optimise.c ------
