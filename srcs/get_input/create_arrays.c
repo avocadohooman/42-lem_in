@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   create_arrays.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 13:34:51 by hopham            #+#    #+#             */
-/*   Updated: 2020/07/08 17:06:02 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/07/10 18:04:00 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 #include <stdbool.h>
 
-static	void	initiate_end_room(t_lem *lem)
+static	void	initiate_end_room(t_lem *lem, char *end)
 {
-	lem->rooms[lem->room_amount - 1]->name = lem->end;
+	lem->rooms[lem->room_amount - 1]->name = end;
 	lem->rooms[lem->room_amount - 1]->pos = lem->room_amount - 1;
 	lem->end_pos = lem->room_amount - 1;
 	lem->rooms[lem->room_amount - 1]->empty = -1;
@@ -33,12 +33,12 @@ void			add_room_to_array(t_lem *lem)
 	{
 		if (!ft_strcmp((char*)name_list->content, lem->start))
 		{
-			lem->rooms[0]->name = lem->start;
+			lem->rooms[0]->name = (char*)name_list->content;
 			lem->rooms[0]->empty = -1;
 			lem->start_pos = 0;
 		}
 		else if (!ft_strcmp((char*)name_list->content, lem->end))
-			initiate_end_room(lem);
+			initiate_end_room(lem, (char*)name_list->content);
 		else
 		{
 			lem->rooms[i]->name = name_list->content;

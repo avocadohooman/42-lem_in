@@ -8,25 +8,30 @@
             "type": "lldb",
             "request": "launch",
             "name": "Debug",
-            "program": "${workspaceFolder}/<your program>",
-            "args": [],
+            "program": "${workspaceFolder}/lem-in",
+            "args": ["<", "test_maps/valid_4.txt"],
             "cwd": "${workspaceFolder}"
         },
 
         {
-			"type": "cppdbg",
+            "name": "(gdb) Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/lem-in",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
 			"MIMode": "lldb",
-			"request": "launch",
-			"name": "Debug_cpp",
-			"program": "${workspaceFolder}/lem-in",
-			"args": [],
-			"cwd": "${workspaceFolder}",
-			"miDebuggerPath": "/Users/HoangPham/lldb-mi/usr/local/bin/lldb-mi",
-			"setupCommands": [
+            "setupCommands": [
                 {
-                    "text": "settings set target.input-path jkauppi_test/Ok/Direct_start_to_end_01"
+                    "description": "Enable pretty-printing for gdb",
+					"ignoreFailures": true,
+					"text": "settings set target.input-path test_maps/valid_4.txt"
                 }
             ]
-		}
+        }
+    
     ]
 }

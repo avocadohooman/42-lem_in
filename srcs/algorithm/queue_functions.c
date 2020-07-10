@@ -6,7 +6,7 @@
 /*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 11:03:01 by HoangPham         #+#    #+#             */
-/*   Updated: 2020/07/10 13:03:23 by hopham           ###   ########.fr       */
+/*   Updated: 2020/07/10 16:33:58 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,5 @@ void	free_queue(t_queue *q)
 		free(q->queue);
 	if (q->visited != NULL)
 		free(q->visited);
+	ft_memdel((void*)&q);
 }

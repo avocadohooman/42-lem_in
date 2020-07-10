@@ -3,14 +3,54 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:04 by hopham            #+#    #+#             */
-/*   Updated: 2020/07/10 13:25:45 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/07/10 18:06:21 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
+
+static void	free_lem_in(t_lem *lem_in)
+{
+	int		i;
+	t_link	*tmp;
+	t_list	*tmp2;
+
+	i = 0;
+	while (i < lem_in->room_amount)
+	{
+		ft_memdel((void*)&lem_in->links[i]);
+		ft_memdel((void*)&lem_in->rooms[i]->links);
+		ft_memdel((void*)&lem_in->rooms[i]->name);
+		i++;	
+	}
+	i = 0;
+	while (i < lem_in->room_amount)
+	{
+		ft_memdel((void*)&lem_in->rooms[i++]);
+	}
+	ft_memdel((void*)&lem_in->links);
+	ft_memdel((void*)&lem_in->rooms);
+	while (lem_in->link_list != NULL)
+	{
+		tmp = lem_in->link_list;
+		lem_in->link_list = lem_in->link_list->next;
+		ft_memdel((void*)&tmp->from);
+		ft_memdel((void*)&tmp->to);
+		ft_memdel((void*)&tmp);
+	}
+	while (lem_in->name_list != NULL)
+	{
+		tmp2 = lem_in->name_list;
+		lem_in->name_list = lem_in->name_list->next;
+		ft_memdel((void*)&tmp2);
+	}
+	ft_memdel((void*)&lem_in->start);
+	ft_memdel((void*)&lem_in->end);
+	ft_memdel((void*)&lem_in);
+}
 
 static int	get_ants(void)
 {
@@ -59,6 +99,7 @@ int			main(void)
 	solve(lem_in);
 	ft_printf("\nTotal Steps: %d\n", lem_in->steps);
 	free(ants);
-	while(1);
+	free_lem_in(lem_in);
+	while (1);
 	return (0);
 }
