@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/05 16:34:24 by gmolin            #+#    #+#             */
-/*   Updated: 2020/07/08 17:18:09 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/07/10 13:31:39 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,5 +119,6 @@ int				print_ants(t_lem *lem_in, t_path *paths)
 		}
 		ft_printf("\n");
 	}
+	ft_memdel((void*)&paths->division);
 	return (lem_in->steps);
 }

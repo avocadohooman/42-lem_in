@@ -6,7 +6,7 @@
 /*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 10:40:50 by HoangPham         #+#    #+#             */
-/*   Updated: 2020/07/08 15:54:01 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/07/10 13:13:35 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	ft_add_path(t_path **path, t_path *new)
 		return ;
 	else if ((*path)->path == NULL)
 	{
+		free_path(*path);
 		(*path) = new;
 		return ;
 	}
