@@ -6,7 +6,7 @@
 /*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 11:27:13 by hopham            #+#    #+#             */
-/*   Updated: 2020/07/10 11:50:01 by hopham           ###   ########.fr       */
+/*   Updated: 2020/07/10 12:31:26 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int				input_scan(t_lem *room)
 	check = 0;
 	while (get_next_line(0, &line) > 0)
 	{
-		if (!ft_strstr(line, "-"))
+		if (!ft_strstr(line, "-") && ft_strlen(line) > 0)
 		{
 			if (scanning_rooms(&line, room, check) == 0)
 				break ;	

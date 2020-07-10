@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 11:43:04 by hopham            #+#    #+#             */
-/*   Updated: 2020/07/08 16:49:21 by gmolin           ###   ########.fr       */
+/*   Updated: 2020/07/10 12:29:07 by hopham           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	get_ants(void)
 		if (!ft_strstr(line, "#") && ft_strlen(line) > 0)
 			break ;
 		else if (!ft_strlen(line))
-			continue ;
+			ft_error("ERROR: ant_numbers is not valid");
 		(ft_strlen(line) > 0) ? ft_printf("%s\n", line) : 0;
 		ft_strdel(&line);
 	}
