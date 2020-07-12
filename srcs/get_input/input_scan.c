@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_scan.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopham <hopham@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: gmolin <gmolin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 11:27:13 by hopham            #+#    #+#             */
-/*   Updated: 2020/07/10 12:31:26 by hopham           ###   ########.fr       */
+/*   Updated: 2020/07/12 14:33:24 by gmolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,25 +24,28 @@ static void		scanning_links(char **line, t_lem *room)
 	ft_strdel(line);
 }
 
+static int		free_and_check_line(char **line)
+{
+	free(*line);
+	get_next_line(0, line);
+	if (ft_strlen(*line) == 0)
+		return (0);
+	return (1);
+}
+
 static int		scanning_rooms(char **line, t_lem *room, int check)
 {
-	(ft_strstr(*line, "##end") || ft_strstr(*line, "##start"))
-	? ft_printf("%s\n", *line) : 0;
 	if (ft_strcmp("##start", *line) == 0 && check == 0)
 	{
 		room->c_start++;
-		free(*line);
-		get_next_line(0, line);
-		if (ft_strlen(*line) == 0)
+		if (!free_and_check_line(line))
 			return (0);
 		(room->c_start == 1) ? add_rooms("start", line, room) : 0;
 	}
 	else if (ft_strcmp("##end", *line) == 0 && check == 0)
 	{
 		room->c_end++;
-		free(*line);
-		get_next_line(0, line);
-		if (ft_strlen(*line) == 0)
+		if (!free_and_check_line(line))
 			return (0);
 		(room->c_end == 1) ? add_rooms("end", line, room) : 0;
 	}
@@ -50,7 +53,7 @@ static int		scanning_rooms(char **line, t_lem *room, int check)
 	{
 		ft_printf("%s\n", *line);
 		ft_strdel(line);
-		return (2) ;
+		return (2);
 	}
 	else if (check == 0)
 		add_rooms("room", line, room);
@@ -68,8 +71,10 @@ int				input_scan(t_lem *room)
 	{
 		if (!ft_strstr(line, "-") && ft_strlen(line) > 0)
 		{
+			if (ft_strstr(line, "##end") || ft_strstr(line, "##start"))
+				ft_printf("%s\n", line);
 			if (scanning_rooms(&line, room, check) == 0)
-				break ;	
+				break ;
 		}
 		else if (ft_strstr(line, "-"))
 		{
